@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Menu, X, Triangle } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.jfif";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -19,12 +20,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-              <Triangle className="w-4 h-4 text-primary" />
-            </div>
-            <span className="text-lg font-semibold text-foreground">
-              Atul<span className="text-primary">.</span>
-            </span>
+            <img 
+              src={logo} 
+              alt="Atul Thorat Logo" 
+              className="h-10 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Navigation */}
