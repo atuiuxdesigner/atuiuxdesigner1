@@ -3,13 +3,52 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Globe, Send, Linkedin, Dribbble, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Globe, Send } from "lucide-react";
+
+// Custom WhatsApp icon to match Lucide style
+const WhatsAppIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+    <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+  </svg>
+);
 
 const contactMethods = [
-  { icon: Mail, label: "Email", value: "hello@atulthorat.com" },
-  { icon: Phone, label: "Phone", value: "+91 98765 43210" },
-  { icon: MapPin, label: "Location", value: "Mumbai, India" },
-  { icon: Globe, label: "Website", value: "atulthorat.com" },
+  { 
+    icon: Mail, 
+    label: "Email", 
+    value: "atuiuxdesigner@gmail.com",
+    href: "mailto:atuiuxdesigner@gmail.com"
+  },
+  { 
+    icon: WhatsAppIcon, 
+    label: "WhatsApp", 
+    value: "+91 96238 80889",
+    href: "https://wa.me/919623880889",
+    external: true
+  },
+  { 
+    icon: MapPin, 
+    label: "Location", 
+    value: "Pune, India",
+    href: null
+  },
+  { 
+    icon: Globe, 
+    label: "Website", 
+    value: "atulthorat.com",
+    href: "https://atulthorat.com",
+    external: true
+  },
 ];
 
 const Contact = () => {
@@ -59,22 +98,40 @@ const Contact = () => {
 
         {/* Contact Methods */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          {contactMethods.map((method, index) => (
-            <div
-              key={index}
-              className="bg-card border border-border rounded-xl p-6 text-center card-hover"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <method.icon className="w-5 h-5 text-primary" />
+          {contactMethods.map((method, index) => {
+            const content = (
+              <>
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <method.icon className="w-5 h-5 text-primary" />
+                </div>
+                <div className="text-sm text-muted-foreground mb-1">
+                  {method.label}
+                </div>
+                <div className="text-foreground font-medium text-sm">
+                  {method.value}
+                </div>
+              </>
+            );
+
+            return method.href ? (
+              <a
+                key={index}
+                href={method.href}
+                target={method.external ? "_blank" : undefined}
+                rel={method.external ? "noopener noreferrer" : undefined}
+                className="bg-card border border-border rounded-xl p-6 text-center card-hover block"
+              >
+                {content}
+              </a>
+            ) : (
+              <div
+                key={index}
+                className="bg-card border border-border rounded-xl p-6 text-center card-hover"
+              >
+                {content}
               </div>
-              <div className="text-sm text-muted-foreground mb-1">
-                {method.label}
-              </div>
-              <div className="text-foreground font-medium text-sm">
-                {method.value}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Contact Form */}
