@@ -1,4 +1,5 @@
-import { Linkedin, Dribbble, ExternalLink, Heart, Triangle } from "lucide-react";
+import { Linkedin, Dribbble, ExternalLink, Heart } from "lucide-react";
+import logo from "@/assets/logo.jfif";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,12 +11,11 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <a href="#home" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                <Triangle className="w-4 h-4 text-primary" />
-              </div>
-              <span className="text-lg font-semibold text-foreground">
-                Atul<span className="text-primary">.</span>
-              </span>
+              <img 
+                src={logo} 
+                alt="Atul Thorat Logo" 
+                className="h-10 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-110"
+              />
             </a>
             <p className="text-muted-foreground text-sm">
               © {currentYear} Atul Thorat. All rights reserved.
