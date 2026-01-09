@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 import logo from "@/assets/logo.jfif";
-
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
@@ -41,8 +41,9 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Theme Toggle & CTA Button */}
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <Button
               variant="outline"
               className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -75,13 +76,16 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button
-                variant="outline"
-                className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground w-full mt-2"
-                asChild
-              >
-                <a href="#contact">Let's Talk</a>
-              </Button>
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
+                <ThemeToggle />
+                <Button
+                  variant="outline"
+                  className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
+                  asChild
+                >
+                  <a href="#contact">Let's Talk</a>
+                </Button>
+              </div>
             </div>
           </div>
         )}
