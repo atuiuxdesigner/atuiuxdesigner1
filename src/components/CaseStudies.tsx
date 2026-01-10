@@ -53,8 +53,6 @@ const CaseStudies = () => {
             const CardWrapper = project.link ? 'a' : 'div';
             const cardProps = project.link ? {
               href: project.link,
-              target: "_blank",
-              rel: "noopener noreferrer",
             } : {};
             
             return (
