@@ -3,12 +3,13 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    title: "YouBank Delivery App",
+    title: "Youhonk Delivery App",
     description:
-      "A comprehensive delivery management system designed to streamline logistics and enhance customer experience with real-time tracking.",
+      "Designed the complete user experience for workshop staff to efficiently manage vehicle pickup & drop operations. Crafted end-to-end user flows and low-fidelity wireframes for seamless handoff to visual designers.",
     tags: ["UX Research", "UI Design", "Prototyping"],
     image: "delivery",
     color: "from-blue-500/20 to-purple-500/20",
+    link: "https://delivery-partner-app-t8k3q3w.gamma.site/",
   },
   {
     title: "YouBank Customer App",
@@ -48,11 +49,23 @@ const CaseStudies = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {projects.map((project, index) => (
-            <article
-              key={index}
-              className="group bg-card border border-border rounded-2xl overflow-hidden card-hover"
-            >
+          {projects.map((project, index) => {
+            const CardWrapper = project.link ? 'a' : 'div';
+            const cardProps = project.link ? {
+              href: project.link,
+              target: "_blank",
+              rel: "noopener noreferrer",
+            } : {};
+            
+            return (
+              <CardWrapper
+                key={index}
+                {...cardProps}
+                className={project.link ? "block cursor-pointer" : ""}
+              >
+                <article
+                  className="group bg-card border border-border rounded-2xl overflow-hidden card-hover h-full"
+                >
               {/* Project Image */}
               <div className={`aspect-video bg-gradient-to-br ${project.color} relative overflow-hidden`}>
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -95,7 +108,9 @@ const CaseStudies = () => {
                 </div>
               </div>
             </article>
-          ))}
+          </CardWrapper>
+            );
+          })}
         </div>
 
         {/* CTA Button */}
