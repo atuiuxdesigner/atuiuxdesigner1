@@ -84,7 +84,7 @@ const Hero = () => {
                 className="border-primary/50 text-primary hover:bg-primary/10 transition-all duration-300"
                 asChild
               >
-                <a href="#contact">Get In Touch</a>
+                <a href="/Atul_Thorat_UX_Designer.pdf" download>Download Resume</a>
               </Button>
             </div>
 
