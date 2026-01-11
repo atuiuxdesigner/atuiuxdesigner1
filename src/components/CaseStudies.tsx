@@ -12,17 +12,17 @@ const projects = [
     link: "https://delivery-partner-app-t8k3q3w.gamma.site/",
   },
   {
-    title: "YouBank Customer App",
+    title: "Youhonk Customer App",
     description:
-      "Mobile banking application focused on simplicity and security, making financial management accessible to everyone.",
+      "Contributed to designing the customer-facing app for booking vehicle repair services, transforming the traditional repair journey into a seamless digital experience.",
     tags: ["Mobile Design", "User Testing", "Design System"],
     image: "customer",
     color: "from-green-500/20 to-teal-500/20",
   },
   {
-    title: "YouBank Mentor App",
+    title: "Youhonk Mentor App",
     description:
-      "An innovative mentorship platform connecting aspiring professionals with industry experts through personalized learning paths.",
+      "Helped design the vendor portal enabling service providers to manage bookings, customer requests, and workshop operations efficiently.",
     tags: ["Product Design", "Wireframing", "Usability"],
     image: "mentor",
     color: "from-orange-500/20 to-red-500/20",
