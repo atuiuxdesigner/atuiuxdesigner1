@@ -20,7 +20,7 @@ const projects = [
     color: "from-green-500/20 to-teal-500/20",
   },
   {
-    title: "Youhonk Mentor App",
+    title: "Youhonk Vendor App",
     description:
       "Helped design the vendor portal enabling service providers to manage bookings, customer requests, and workshop operations efficiently.",
     tags: ["Product Design", "Wireframing", "Usability"],
