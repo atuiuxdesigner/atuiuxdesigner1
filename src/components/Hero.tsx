@@ -124,7 +124,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary animate-glow-pulse blur-xl scale-110" />
               
               {/* Profile Container */}
-              <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full border-2 border-primary/50 overflow-hidden glow-cyan">
+              <div className="relative w-72 h-72 rounded-full border-2 border-primary/50 overflow-hidden glow-cyan">
                 <div className="absolute inset-2 rounded-full bg-gradient-to-br from-secondary to-muted overflow-hidden">
                   {/* Placeholder for profile image */}
                   <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
