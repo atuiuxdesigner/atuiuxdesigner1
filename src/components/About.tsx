@@ -60,28 +60,28 @@ const About = () => {
         {/* Timeline */}
         <div className="relative max-w-4xl mx-auto">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary/20 -translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary/20 md:-translate-x-1/2" />
 
           {/* Journey Steps */}
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {journeySteps.map((step, index) => (
               <div
                 key={index}
                 className={`relative flex items-center ${
-                  step.side === "left" ? "flex-row" : "flex-row-reverse"
+                  step.side === "left" ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
                 {/* Content Card */}
                 <div
-                  className={`w-5/12 ${
-                    step.side === "left" ? "pr-8 text-right" : "pl-8 text-left"
+                  className={`w-full pl-12 md:pl-0 md:w-5/12 text-left ${
+                    step.side === "left" ? "md:pr-8 md:text-right" : "md:pl-8 md:text-left"
                   }`}
                 >
-                  <div className="bg-card border border-border rounded-xl p-6 card-hover">
+                  <div className="bg-card border border-border rounded-xl p-4 md:p-6 card-hover">
                     <span className="text-primary font-bold text-lg">
                       {step.year}
                     </span>
-                    <h3 className="text-xl font-semibold text-foreground mt-2 mb-3">
+                    <h3 className="text-lg md:text-xl font-semibold text-foreground mt-2 mb-3">
                       {step.title}
                     </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
@@ -91,10 +91,10 @@ const About = () => {
                 </div>
 
                 {/* Timeline Dot */}
-                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background glow-cyan-sm z-10" />
+                <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background glow-cyan-sm z-10" />
 
                 {/* Empty Space */}
-                <div className="w-5/12" />
+                <div className="hidden md:block md:w-5/12" />
               </div>
             ))}
           </div>
