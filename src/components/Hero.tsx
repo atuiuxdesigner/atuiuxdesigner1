@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Dribbble, ExternalLink, ChevronDown } from "lucide-react";
+import profileImage from "@/assets/profile.png";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
@@ -125,11 +126,12 @@ const Hero = () => {
               
               {/* Profile Container */}
               <div className="relative w-72 h-72 rounded-full border-2 border-primary/50 overflow-hidden glow-cyan">
-                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-secondary to-muted overflow-hidden">
-                  {/* Placeholder for profile image */}
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <span className="text-6xl font-bold text-primary/30">AT</span>
-                  </div>
+                <div className="absolute inset-2 rounded-full overflow-hidden">
+                  <img 
+                    src={profileImage} 
+                    alt="Atul Thorat - UX Designer"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
               </div>
 
