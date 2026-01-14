@@ -44,7 +44,7 @@ const Hero = () => {
       <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-4">
@@ -119,7 +119,7 @@ const Hero = () => {
           </div>
 
           {/* Right Content - Profile Image */}
-          <div className="flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <div className="order-first lg:order-last flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <div className="relative">
               {/* Glow Ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary animate-glow-pulse blur-xl scale-110" />
