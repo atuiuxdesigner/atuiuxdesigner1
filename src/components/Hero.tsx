@@ -116,6 +116,12 @@ const Hero = () => {
                 <ExternalLink className="w-5 h-5" />
               </a>
             </div>
+
+            {/* Scroll Down Indicator */}
+            <div className="flex flex-col items-center gap-2 text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
+              <span className="text-sm">Scroll Down</span>
+              <ChevronDown className="w-5 h-5 animate-scroll" />
+            </div>
           </div>
 
           {/* Right Content - Profile Image */}
@@ -143,11 +149,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
-          <span className="text-sm">Scroll Down</span>
-          <ChevronDown className="w-5 h-5 animate-scroll" />
-        </div>
       </div>
     </section>
   );
