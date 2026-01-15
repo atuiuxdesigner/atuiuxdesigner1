@@ -50,8 +50,8 @@ const skillCategories: SkillCategory[] = [
 ];
 
 const stats = [
-  { value: 5, suffix: "+", label: "Years of Experience" },
-  { value: 50, suffix: "+", label: "Projects Completed" },
+  { value: 1, suffix: "+", label: "Years of Experience" },
+  { value: 50, suffix: "+", label: "Sprints Completed" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
   { value: 1, suffix: "M+", label: "Users Impacted" },
 ];
