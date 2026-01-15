@@ -117,11 +117,6 @@ const Hero = () => {
               </a>
             </div>
 
-            {/* Scroll Down Indicator */}
-            <div className="flex flex-col items-center gap-2 text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
-              <span className="text-sm">Scroll Down</span>
-              <ChevronDown className="w-5 h-5 animate-scroll" />
-            </div>
           </div>
 
           {/* Right Content - Profile Image */}
@@ -149,6 +144,11 @@ const Hero = () => {
           </div>
         </div>
 
+        {/* Scroll Down Indicator - Centered */}
+        <div className="flex flex-col items-center gap-2 text-muted-foreground animate-fade-in mt-12" style={{ animationDelay: "0.6s" }}>
+          <span className="text-sm">Scroll Down</span>
+          <ChevronDown className="w-5 h-5 animate-scroll" />
+        </div>
       </div>
     </section>
   );
