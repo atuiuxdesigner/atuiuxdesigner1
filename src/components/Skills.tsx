@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 
 interface Skill {
   name: string;
+  level: number;
 }
 
 interface SkillCategory {
@@ -13,37 +14,37 @@ const skillCategories: SkillCategory[] = [
   {
     title: "UX Design",
     skills: [
-      { name: "User Research" },
-      { name: "Wireframing" },
-      { name: "Prototyping" },
-      { name: "Usability Testing" },
+      { name: "User Research", level: 95 },
+      { name: "Wireframing", level: 90 },
+      { name: "Prototyping", level: 92 },
+      { name: "Usability Testing", level: 88 },
     ],
   },
   {
     title: "UI Design",
     skills: [
-      { name: "Visual Design" },
-      { name: "Design Systems" },
-      { name: "Typography" },
-      { name: "Color Theory" },
+      { name: "Visual Design", level: 94 },
+      { name: "Design Systems", level: 90 },
+      { name: "Typography", level: 88 },
+      { name: "Color Theory", level: 92 },
     ],
   },
   {
     title: "Tools",
     skills: [
-      { name: "Figma" },
-      { name: "Adobe XD" },
-      { name: "Sketch" },
-      { name: "Framer" },
+      { name: "Figma", level: 96 },
+      { name: "Adobe XD", level: 85 },
+      { name: "Sketch", level: 80 },
+      { name: "Framer", level: 75 },
     ],
   },
   {
     title: "Soft Skills",
     skills: [
-      { name: "Communication" },
-      { name: "Problem Solving" },
-      { name: "Collaboration" },
-      { name: "Adaptability" },
+      { name: "Communication", level: 92 },
+      { name: "Problem Solving", level: 94 },
+      { name: "Collaboration", level: 90 },
+      { name: "Adaptability", level: 88 },
     ],
   },
 ];
@@ -55,11 +56,29 @@ const stats = [
   { value: 1000, suffix: "+", label: "Users Impacted" },
 ];
 
-const SkillChip = ({ skill }: { skill: Skill }) => {
+const SkillBar = ({ skill, isVisible }: { skill: Skill; isVisible: boolean }) => {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => setWidth(skill.level), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, skill.level]);
+
   return (
-    <span className="inline-flex items-center px-4 py-2 bg-secondary hover:bg-primary/20 border border-border hover:border-primary/50 rounded-full text-sm text-foreground transition-all duration-300 cursor-default">
-      {skill.name}
-    </span>
+    <div className="space-y-2">
+      <div className="flex justify-between text-sm">
+        <span className="text-foreground">{skill.name}</span>
+        <span className="text-primary">{skill.level}%</span>
+      </div>
+      <div className="h-2 bg-secondary rounded-full overflow-hidden">
+        <div
+          className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full transition-all duration-1000 ease-out glow-cyan-sm"
+          style={{ width: `${width}%` }}
+        />
+      </div>
+    </div>
   );
 };
 
@@ -144,9 +163,13 @@ const Skills = () => {
                 <span className="w-2 h-2 bg-primary rounded-full" />
                 {category.title}
               </h3>
-              <div className="flex flex-wrap gap-3">
+              <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
-                  <SkillChip key={skillIndex} skill={skill} />
+                  <SkillBar
+                    key={skillIndex}
+                    skill={skill}
+                    isVisible={isVisible}
+                  />
                 ))}
               </div>
             </div>
