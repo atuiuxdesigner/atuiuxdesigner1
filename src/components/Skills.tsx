@@ -2,7 +2,8 @@ import { useEffect, useState, useRef } from "react";
 
 interface Skill {
   name: string;
-  level: number;
+  level: "Expert" | "Advanced" | "Proficient";
+  evidence: string;
 }
 
 interface SkillCategory {
@@ -14,37 +15,37 @@ const skillCategories: SkillCategory[] = [
   {
     title: "UX Design",
     skills: [
-      { name: "User Research", level: 95 },
-      { name: "Wireframing", level: 90 },
-      { name: "Prototyping", level: 92 },
-      { name: "Usability Testing", level: 88 },
+      { name: "User Research", level: "Expert", evidence: "Led discovery for 3 product launches" },
+      { name: "Wireframing", level: "Advanced", evidence: "Delivered 50+ sprint deliverables" },
+      { name: "Prototyping", level: "Expert", evidence: "Created hi-fi prototypes in Figma" },
+      { name: "Usability Testing", level: "Advanced", evidence: "Conducted 20+ user testing sessions" },
     ],
   },
   {
     title: "UI Design",
     skills: [
-      { name: "Visual Design", level: 94 },
-      { name: "Design Systems", level: 90 },
-      { name: "Typography", level: 88 },
-      { name: "Color Theory", level: 92 },
+      { name: "Visual Design", level: "Expert", evidence: "Designed enterprise dashboards" },
+      { name: "Design Systems", level: "Advanced", evidence: "Built component libraries" },
+      { name: "Typography", level: "Proficient", evidence: "Applied type hierarchy best practices" },
+      { name: "Color Theory", level: "Advanced", evidence: "Created accessible color palettes" },
     ],
   },
   {
     title: "Tools",
     skills: [
-      { name: "Figma", level: 96 },
-      { name: "Adobe XD", level: 85 },
-      { name: "Sketch", level: 80 },
-      { name: "Framer", level: 75 },
+      { name: "Figma", level: "Expert", evidence: "Primary design tool" },
+      { name: "Adobe XD", level: "Proficient", evidence: "Cross-platform collaboration" },
+      { name: "Sketch", level: "Proficient", evidence: "Legacy project support" },
+      { name: "Framer", level: "Proficient", evidence: "Interactive prototypes" },
     ],
   },
   {
     title: "Soft Skills",
     skills: [
-      { name: "Communication", level: 92 },
-      { name: "Problem Solving", level: 94 },
-      { name: "Collaboration", level: 90 },
-      { name: "Adaptability", level: 88 },
+      { name: "Communication", level: "Expert", evidence: "Stakeholder presentations" },
+      { name: "Problem Solving", level: "Expert", evidence: "Complex design challenges" },
+      { name: "Collaboration", level: "Advanced", evidence: "Cross-functional teams" },
+      { name: "Adaptability", level: "Advanced", evidence: "Agile environments" },
     ],
   },
 ];
@@ -56,28 +57,27 @@ const stats = [
   { value: 1000, suffix: "+", label: "Users Impacted" },
 ];
 
-const SkillBar = ({ skill, isVisible }: { skill: Skill; isVisible: boolean }) => {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => setWidth(skill.level), 100);
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible, skill.level]);
+const SkillItem = ({ skill, isVisible, index }: { skill: Skill; isVisible: boolean; index: number }) => {
+  const levelStyles = {
+    Expert: "bg-primary text-primary-foreground",
+    Advanced: "bg-primary/70 text-primary-foreground",
+    Proficient: "bg-primary/40 text-foreground",
+  };
 
   return (
-    <div className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <span className="text-foreground">{skill.name}</span>
-        <span className="text-primary">{skill.level}%</span>
+    <div 
+      className={`py-3 border-b border-border/50 last:border-0 transition-all duration-500 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+      }`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <div className="flex items-center justify-between gap-3 mb-1">
+        <span className="text-foreground font-medium">{skill.name}</span>
+        <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${levelStyles[skill.level]}`}>
+          {skill.level}
+        </span>
       </div>
-      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full transition-all duration-1000 ease-out glow-cyan-sm"
-          style={{ width: `${width}%` }}
-        />
-      </div>
+      <p className="text-muted-foreground text-sm">{skill.evidence}</p>
     </div>
   );
 };
@@ -159,16 +159,17 @@ const Skills = () => {
               key={index}
               className="bg-card border border-border rounded-xl p-6 card-hover"
             >
-              <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-primary rounded-full" />
                 {category.title}
               </h3>
-              <div className="space-y-4">
+              <div>
                 {category.skills.map((skill, skillIndex) => (
-                  <SkillBar
+                  <SkillItem
                     key={skillIndex}
                     skill={skill}
                     isVisible={isVisible}
+                    index={skillIndex}
                   />
                 ))}
               </div>
