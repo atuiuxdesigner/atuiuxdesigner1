@@ -1,4 +1,5 @@
-import { Linkedin, Dribbble, ExternalLink, Heart } from "lucide-react";
+import { Linkedin, Dribbble, Heart } from "lucide-react";
+import BehanceIcon from "@/components/icons/BehanceIcon";
 import logo from "@/assets/logo.jfif";
 
 const Footer = () => {
@@ -48,12 +49,12 @@ const Footer = () => {
               <Dribbble className="w-5 h-5" />
             </a>
             <a
-              href="https://behance.net"
+              href="https://www.behance.net/atulthorat1"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300"
             >
-              <ExternalLink className="w-5 h-5" />
+              <BehanceIcon className="w-5 h-5" />
             </a>
           </div>
         </div>
