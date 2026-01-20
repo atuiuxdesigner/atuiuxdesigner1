@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Linkedin, Dribbble, ExternalLink, ChevronDown } from "lucide-react";
+import { Linkedin, Dribbble, ChevronDown } from "lucide-react";
+import BehanceIcon from "@/components/icons/BehanceIcon";
 import profileImage from "@/assets/profile.png";
 
 const Hero = () => {
@@ -108,12 +109,12 @@ const Hero = () => {
                 <Dribbble className="w-5 h-5" />
               </a>
               <a
-                href="https://behance.net"
+                href="https://www.behance.net/atulthorat1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 hover:glow-cyan-sm"
               >
-                <ExternalLink className="w-5 h-5" />
+                <BehanceIcon className="w-5 h-5" />
               </a>
             </div>
 
