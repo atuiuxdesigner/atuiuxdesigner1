@@ -33,7 +33,7 @@ const CaseStudyDelivery = () => {
         {/* Embedded Gamma page */}
         <main className="pt-16 h-screen">
           <iframe
-            src="https://gamma.app/docs/UX-Case-Study-zucd452pw41i7qf"
+            src="https://delivery-partner-app-t8k3q3w.gamma.site/ux-case-study"
             title="UX Case Study"
             className="w-full h-[calc(100vh-4rem)] border-0"
             allow="fullscreen"
