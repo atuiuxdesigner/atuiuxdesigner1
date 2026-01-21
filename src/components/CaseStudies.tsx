@@ -1,7 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  image: string;
+  color: string;
+  internalLink?: string;
+  link?: string;
+}
+
+const projects: Project[] = [
   {
     title: "Youhonk Delivery App",
     description:
@@ -9,7 +20,7 @@ const projects = [
     tags: ["UX Research", "UI Design", "Prototyping"],
     image: "delivery",
     color: "from-blue-500/20 to-purple-500/20",
-    link: "https://delivery-partner-app-t8k3q3w.gamma.site/",
+    internalLink: "/case-study/delivery",
   },
   {
     title: "Youhonk Customer App",
@@ -50,64 +61,73 @@ const CaseStudies = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {projects.map((project, index) => {
-            const CardWrapper = project.link ? 'a' : 'div';
-            const cardProps = project.link ? {
-              href: project.link,
-            } : {};
+            const hasLink = 'internalLink' in project || 'link' in project;
             
-            return (
-              <CardWrapper
-                key={index}
-                {...cardProps}
-                className={project.link ? "block cursor-pointer" : ""}
+            const cardContent = (
+              <article
+                className="group bg-card border border-border rounded-2xl overflow-hidden card-hover h-full"
               >
-                <article
-                  className="group bg-card border border-border rounded-2xl overflow-hidden card-hover h-full"
-                >
-              {/* Project Image */}
-              <div className={`aspect-video bg-gradient-to-br ${project.color} relative overflow-hidden`}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-4xl font-bold text-foreground/20">
-                    {project.image.charAt(0).toUpperCase()}
-                  </span>
-                </div>
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                    <ArrowUpRight className="w-6 h-6 text-primary-foreground" />
+                {/* Project Image */}
+                <div className={`aspect-video bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-4xl font-bold text-foreground/20">
+                      {project.image.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                      <ArrowUpRight className="w-6 h-6 text-primary-foreground" />
+                    </div>
+                  </div>
+                  {/* Case Study Tag */}
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-background/80 backdrop-blur-sm text-xs font-medium text-primary rounded-full border border-primary/30">
+                      CASE STUDY
+                    </span>
                   </div>
                 </div>
-                {/* Case Study Tag */}
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-background/80 backdrop-blur-sm text-xs font-medium text-primary rounded-full border border-primary/30">
-                    CASE STUDY
-                  </span>
-                </div>
-              </div>
 
-              {/* Project Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {project.description}
-                </p>
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                {/* Project Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </article>
-          </CardWrapper>
+              </article>
             );
+
+            if ('internalLink' in project && project.internalLink) {
+              return (
+                <Link key={index} to={project.internalLink} className="block cursor-pointer">
+                  {cardContent}
+                </Link>
+              );
+            }
+            
+            if ('link' in project && project.link) {
+              return (
+                <a key={index} href={project.link} className="block cursor-pointer">
+                  {cardContent}
+                </a>
+              );
+            }
+
+            return <div key={index}>{cardContent}</div>;
           })}
         </div>
 
