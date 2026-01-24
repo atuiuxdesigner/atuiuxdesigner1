@@ -1,45 +1,41 @@
 
-
-## Replace Website with Telegram Bot in Contact Section
+## Update Skills Section with Custom Category Icons
 
 ### Overview
-Update the Contact section to replace the "Website" contact method with a Telegram bot link, keeping the same visual style and functionality.
+Replace the small dot indicators (`w-2 h-2 bg-primary rounded-full`) in the Skills section with the uploaded SVG icons, matching each icon to its respective skill category title. The SVG colors will be updated to use the project's primary color variable for consistency with the design palette.
 
 ### Changes Required
 
-**File: `src/components/Contact.tsx`**
+**File: `src/components/Skills.tsx`**
 
-1. **Add a custom Telegram icon** - Create a custom SVG icon matching the Lucide icon style (similar to the existing WhatsApp icon)
+1. **Create icon components for each category** - Define 4 inline SVG components that match the uploaded icons:
+   - `UXDesignIcon` - Lightbulb icon for UX Design
+   - `UIDesignIcon` - Palette/color icon for UI Design  
+   - `ToolsIcon` - Wrench/tool icon for Tools
+   - `SoftSkillsIcon` - People/users icon for Soft Skills
 
-2. **Update the contactMethods array** - Replace the Website entry:
-   
-   **Current:**
-   ```typescript
-   { 
-     icon: Globe, 
-     label: "Website", 
-     value: "atulthorat.com",
-     href: "https://atulthorat.com",
-     external: true
-   }
+2. **Update colors to match design palette** - Change the hardcoded `#35BDF8` color in SVGs to use `currentColor` so it inherits the primary color from Tailwind's `text-primary` class
+
+3. **Add icon property to skillCategories** - Extend the `SkillCategory` interface to include an `icon` property that references the appropriate icon component
+
+4. **Update the category header rendering** - Replace:
+   ```tsx
+   <span className="w-2 h-2 bg-primary rounded-full" />
    ```
-   
-   **New:**
-   ```typescript
-   { 
-     icon: TelegramIcon, 
-     label: "Telegram", 
-     value: "@Atul_Thorat_Bot",
-     href: "https://t.me/Atul_Thorat_20260124_bot",
-     external: true
-   }
-   ```
+   With the corresponding SVG icon component, sized appropriately (32x32 or 40x40)
 
-3. **Remove unused Globe import** - Clean up the import statement since Globe icon will no longer be needed
+### Icon Mapping
+
+| Category Title | Icon File | Icon Description |
+|----------------|-----------|------------------|
+| UX Design | UX_Design.svg | Lightbulb (ideas/innovation) |
+| UI Design | UI_Design.svg | Color palette |
+| Tools | Tools.svg | Wrench tool |
+| Soft Skills | Soft_Skills.svg | Group of people |
 
 ### Technical Details
 
-- The Telegram icon will be a custom SVG component styled to match the existing Lucide icons (stroke-based, 24x24 viewBox)
-- The link will open in a new tab (using existing `external: true` behavior)
-- Display value will be shortened to "@Atul_Thorat_Bot" for cleaner appearance
-
+- Icons will be defined as React functional components returning inline SVG
+- Using `currentColor` allows the icons to inherit color from parent's `text-primary` class
+- Icon size: 32x32px to maintain visual balance with category titles
+- Background rectangle with 10% opacity primary color creates subtle container effect matching the uploaded designs
