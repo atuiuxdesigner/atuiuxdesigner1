@@ -124,7 +124,7 @@ const Contact = () => {
                 <div className="text-sm text-muted-foreground mb-1">
                   {method.label}
                 </div>
-                <div className="text-foreground font-medium text-sm">
+                <div className="text-foreground font-medium text-sm truncate max-w-full">
                   {method.value}
                 </div>
               </>
