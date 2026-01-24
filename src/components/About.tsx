@@ -2,38 +2,43 @@ import { Quote } from "lucide-react";
 
 const journeySteps = [
   {
-    year: "2018",
+    year: "2015",
     title: "The Unexpected Path",
+    subtitle: "Accidental Engineer",
     description:
-      "Started my career in a completely different field, but always felt drawn to the creative side of technology. Little did I know this would be the beginning of a transformative journey.",
-    side: "left",
-  },
-  {
-    year: "2019",
-    title: "The Struggle",
-    description:
-      "Spent countless nights learning design principles, struggling with imposter syndrome, and questioning if this path was right for me. Every failure taught me something new.",
-    side: "right",
-  },
-  {
-    year: "2020",
-    title: "The Dark Period",
-    description:
-      "Faced rejection after rejection, but each 'no' fueled my determination. I realized that great design isn't about perfection—it's about solving real problems for real people.",
+      "Took admission in Computer Engineering without a clear direction. Everything felt hard, concepts were overwhelming, and I struggled to keep up with my peers.",
     side: "left",
   },
   {
     year: "2021",
-    title: "The Awakening",
+    title: "The Struggle",
+    subtitle: "Persistence Through Failure",
     description:
-      "Everything clicked. I found my unique voice in design, landed my first major project, and discovered that empathy is the most powerful tool in a designer's arsenal.",
+      "Failed exams, had to drop a year. But I refused to give up. After countless attempts and sleepless nights, I finally completed my Bachelor's degree during the COVID-19 pandemic.",
     side: "right",
   },
   {
     year: "2022",
-    title: "The Dream Realized",
+    title: "The Dark Period",
+    subtitle: "Post-COVID Reality",
     description:
-      "Now working on products that impact millions of users. Every day is a new opportunity to create something meaningful. The journey continues, but I'm exactly where I'm meant to be.",
+      "Companies wouldn't hire graduates from the COVID period. Felt unguided and lost. Started working in a Non-IT field just to survive, but my creative spirit kept searching for more.",
+    side: "left",
+  },
+  {
+    year: "2023",
+    title: "The Awakening",
+    subtitle: "Discovering UX Design",
+    description:
+      "Found my calling in UX Design — a field that solves human psychology and creates peaceful paths for users. Like Lord Buddha's teachings, it's about understanding suffering and easing it through thoughtful solutions.",
+    side: "right",
+  },
+  {
+    year: "2024",
+    title: "The Dream Realized",
+    subtitle: "Landing at Youhonk",
+    description:
+      "After dedicated practice in UX+UI, I landed my dream job at Youhonk, a Pune-based startup connecting users with trusted vehicle repair services. Now 1+ years into creating meaningful experiences.",
     side: "left",
   },
 ];
@@ -81,9 +86,12 @@ const About = () => {
                     <span className="text-primary font-bold text-lg">
                       {step.year}
                     </span>
-                    <h3 className="text-lg md:text-xl font-semibold text-foreground mt-2 mb-3">
+                    <h3 className="text-lg md:text-xl font-semibold text-foreground mt-2 mb-1">
                       {step.title}
                     </h3>
+                    <p className="text-primary/80 text-xs font-medium mb-3">
+                      {step.subtitle}
+                    </p>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {step.description}
                     </p>
