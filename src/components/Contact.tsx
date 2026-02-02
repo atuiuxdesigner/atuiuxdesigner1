@@ -62,8 +62,8 @@ const contactMethods = [
   { 
     icon: TelegramIcon, 
     label: "Telegram", 
-    value: "@Atul_Thorat_Bot",
-    href: "https://t.me/Atul_Thorat_20260124_bot",
+    value: "@Atul9623",
+    href: "https://t.me/Atul9623",
     external: true
   },
 ];
