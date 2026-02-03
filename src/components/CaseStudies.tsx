@@ -3,6 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import thumbnailDelivery from "@/assets/thumbnail-dp1.png";
 import thumbnailCustomer from "@/assets/thumbnail-YC_1.png";
 import thumbnailVendor from "@/assets/thumbnail-YP_1.png";
+import iconDelivery from "@/assets/YH_Delivery_App.svg";
+import iconCustomer from "@/assets/YH_Customer_App.svg";
+import iconVendor from "@/assets/YH_Vendor_App.svg";
 import { Link } from "react-router-dom";
 
 interface Project {
@@ -12,6 +15,7 @@ interface Project {
   image: string;
   color: string;
   thumbnail?: string;
+  hoverIcon?: string;
   internalLink?: string;
   link?: string;
 }
@@ -25,6 +29,7 @@ const projects: Project[] = [
     image: "delivery",
     color: "from-blue-500/20 to-purple-500/20",
     thumbnail: thumbnailDelivery,
+    hoverIcon: iconDelivery,
     internalLink: "/case-study/delivery",
   },
   {
@@ -35,6 +40,7 @@ const projects: Project[] = [
     image: "customer",
     color: "from-green-500/20 to-teal-500/20",
     thumbnail: thumbnailCustomer,
+    hoverIcon: iconCustomer,
   },
   {
     title: "Youhonk Vendor App",
@@ -44,6 +50,7 @@ const projects: Project[] = [
     image: "mentor",
     color: "from-orange-500/20 to-red-500/20",
     thumbnail: thumbnailVendor,
+    hoverIcon: iconVendor,
   },
 ];
 
@@ -91,8 +98,14 @@ const CaseStudies = () => {
                   </div>
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                      <ArrowUpRight className="w-6 h-6 text-primary-foreground" />
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300 overflow-hidden">
+                      {project.hoverIcon ? (
+                        <img src={project.hoverIcon} alt="" className="w-full h-full object-contain" />
+                      ) : (
+                        <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                          <ArrowUpRight className="w-6 h-6 text-primary-foreground" />
+                        </div>
+                      )}
                     </div>
                   </div>
                   {/* Case Study Tag */}
