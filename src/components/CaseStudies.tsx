@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import thumbnailDelivery from "@/assets/thumbnail-dp1.png";
+import thumbnailCustomer from "@/assets/thumbnail-YC_1.png";
+import thumbnailVendor from "@/assets/thumbnail-YP_1.png";
 import { Link } from "react-router-dom";
 
 interface Project {
@@ -32,6 +34,7 @@ const projects: Project[] = [
     tags: ["Mobile Design", "User Testing", "Design System"],
     image: "customer",
     color: "from-green-500/20 to-teal-500/20",
+    thumbnail: thumbnailCustomer,
   },
   {
     title: "Youhonk Vendor App",
@@ -40,6 +43,7 @@ const projects: Project[] = [
     tags: ["Product Design", "Wireframing", "Usability"],
     image: "mentor",
     color: "from-orange-500/20 to-red-500/20",
+    thumbnail: thumbnailVendor,
   },
 ];
 
