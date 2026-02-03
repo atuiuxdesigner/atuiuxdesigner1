@@ -8,6 +8,7 @@ interface Project {
   tags: string[];
   image: string;
   color: string;
+  thumbnail?: string;
   internalLink?: string;
   link?: string;
 }
@@ -20,6 +21,7 @@ const projects: Project[] = [
     tags: ["UX Research", "UI Design", "Prototyping"],
     image: "delivery",
     color: "from-blue-500/20 to-purple-500/20",
+    thumbnail: "https://cdn.gamma.app/zug3wzy5lereqaa/generated-images/Hxr24GhKtM9kvmJ4LVRe8.png",
     internalLink: "/case-study/delivery",
   },
   {
@@ -70,9 +72,17 @@ const CaseStudies = () => {
                 {/* Project Image */}
                 <div className={`aspect-video bg-gradient-to-br ${project.color} relative overflow-hidden`}>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-4xl font-bold text-foreground/20">
-                      {project.image.charAt(0).toUpperCase()}
-                    </span>
+                    {project.thumbnail ? (
+                      <img 
+                        src={project.thumbnail} 
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-4xl font-bold text-foreground/20">
+                        {project.image.charAt(0).toUpperCase()}
+                      </span>
+                    )}
                   </div>
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
