@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import thumbnailDelivery from "@/assets/thumbnail-dp1.png";
 import { Link } from "react-router-dom";
 
 interface Project {
@@ -21,7 +22,7 @@ const projects: Project[] = [
     tags: ["UX Research", "UI Design", "Prototyping"],
     image: "delivery",
     color: "from-blue-500/20 to-purple-500/20",
-    thumbnail: "https://cdn.gamma.app/zug3wzy5lereqaa/generated-images/Hxr24GhKtM9kvmJ4LVRe8.png",
+    thumbnail: thumbnailDelivery,
     internalLink: "/case-study/delivery",
   },
   {
