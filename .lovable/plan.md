@@ -1,74 +1,57 @@
 
-
-## Add Thumbnail Image for Youhonk Delivery Partner App Case Study
+## Add Thumbnail Images for Customer and Vendor App Case Studies
 
 ### Overview
-Add the provided external image URL as a thumbnail for the Youhonk Delivery Partner App case study card, replacing the current placeholder letter display.
+Copy the two uploaded thumbnail images to the assets folder and update the CaseStudies component to display them for the Youhonk Customer App and Youhonk Vendor App case study cards.
 
 ### Changes Required
 
-**File: `src/components/CaseStudies.tsx`**
+**Step 1: Copy Images to Assets Folder**
 
-1. **Update the Project interface** - Add an optional `thumbnail` property for external image URLs:
+| Uploaded File | Destination Path |
+|---------------|------------------|
+| `user-uploads://thumbnail-YC_1.png` | `src/assets/thumbnail-YC_1.png` |
+| `user-uploads://thumbnail-YP_1.png` | `src/assets/thumbnail-YP_1.png` |
+
+**Step 2: Update `src/components/CaseStudies.tsx`**
+
+1. **Add new imports** (after line 3):
    ```typescript
-   interface Project {
-     title: string;
-     description: string;
-     tags: string[];
-     image: string;
-     color: string;
-     thumbnail?: string;  // NEW: Optional external image URL
-     internalLink?: string;
-     link?: string;
-   }
+   import thumbnailCustomer from "@/assets/thumbnail-YC_1.png";
+   import thumbnailVendor from "@/assets/thumbnail-YP_1.png";
    ```
 
-2. **Add thumbnail URL to Delivery App project** - Update the first project in the `projects` array:
-   ```typescript
-   {
-     title: "Youhonk Delivery App",
-     description: "...",
-     tags: [...],
-     image: "delivery",
-     color: "from-blue-500/20 to-purple-500/20",
-     thumbnail: "https://cdn.gamma.app/zug3wzy5lereqaa/generated-images/Hxr24GhKtM9kvmJ4LVRe8.png",
-     internalLink: "/case-study/delivery",
-   }
-   ```
+2. **Update Youhonk Customer App project** (lines 28-35):
+   Add `thumbnail: thumbnailCustomer` to the project object
 
-3. **Update card rendering** - Modify the project image section (lines 71-76) to conditionally display the thumbnail image or fallback to the letter placeholder:
-   
-   **Current:**
-   ```tsx
-   <div className="absolute inset-0 flex items-center justify-center">
-     <span className="text-4xl font-bold text-foreground/20">
-       {project.image.charAt(0).toUpperCase()}
-     </span>
-   </div>
-   ```
-   
-   **New:**
-   ```tsx
-   <div className="absolute inset-0 flex items-center justify-center">
-     {project.thumbnail ? (
-       <img 
-         src={project.thumbnail} 
-         alt={project.title}
-         className="w-full h-full object-cover"
-       />
-     ) : (
-       <span className="text-4xl font-bold text-foreground/20">
-         {project.image.charAt(0).toUpperCase()}
-       </span>
-     )}
-   </div>
-   ```
+3. **Update Youhonk Vendor App project** (lines 36-43):
+   Add `thumbnail: thumbnailVendor` to the project object
+
+### Final Projects Array Structure
+
+```typescript
+const projects: Project[] = [
+  {
+    title: "Youhonk Delivery App",
+    // ... existing properties
+    thumbnail: thumbnailDelivery,
+    internalLink: "/case-study/delivery",
+  },
+  {
+    title: "Youhonk Customer App",
+    // ... existing properties
+    thumbnail: thumbnailCustomer,  // NEW
+  },
+  {
+    title: "Youhonk Vendor App",
+    // ... existing properties
+    thumbnail: thumbnailVendor,    // NEW
+  },
+];
+```
 
 ### Technical Details
 
-- The thumbnail image will be loaded from the external Gamma CDN URL
-- Using `object-cover` ensures the image fills the aspect-ratio container while maintaining proportions
-- The gradient background (`color`) will still show behind the image as a loading placeholder
-- The hover overlay and "CASE STUDY" tag remain unchanged and will display on top of the image
-- Other case study cards without thumbnails will continue showing the letter placeholder
-
+- Images are imported as ES6 modules for proper bundling and optimization
+- The existing conditional rendering logic (`project.thumbnail ? <img> : <placeholder>`) will automatically display the new thumbnails
+- All three case study cards will now show their respective thumbnail images instead of letter placeholders
