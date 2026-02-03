@@ -1,22 +1,74 @@
 
-## Update Telegram Contact Information
+
+## Add Thumbnail Image for Youhonk Delivery Partner App Case Study
 
 ### Overview
-Update the Telegram contact details in the Contact section with the new username and link.
+Add the provided external image URL as a thumbnail for the Youhonk Delivery Partner App case study card, replacing the current placeholder letter display.
 
 ### Changes Required
 
-**File: `src/components/Contact.tsx`**
+**File: `src/components/CaseStudies.tsx`**
 
-Update the Telegram entry in the `contactMethods` array (lines 62-68):
+1. **Update the Project interface** - Add an optional `thumbnail` property for external image URLs:
+   ```typescript
+   interface Project {
+     title: string;
+     description: string;
+     tags: string[];
+     image: string;
+     color: string;
+     thumbnail?: string;  // NEW: Optional external image URL
+     internalLink?: string;
+     link?: string;
+   }
+   ```
 
-| Field | Current Value | New Value |
-|-------|---------------|-----------|
-| `value` | `@Atul_Thorat_Bot` | `@Atul9623` |
-| `href` | `https://t.me/Atul_Thorat_20260124_bot` | `https://t.me/Atul9623` |
+2. **Add thumbnail URL to Delivery App project** - Update the first project in the `projects` array:
+   ```typescript
+   {
+     title: "Youhonk Delivery App",
+     description: "...",
+     tags: [...],
+     image: "delivery",
+     color: "from-blue-500/20 to-purple-500/20",
+     thumbnail: "https://cdn.gamma.app/zug3wzy5lereqaa/generated-images/Hxr24GhKtM9kvmJ4LVRe8.png",
+     internalLink: "/case-study/delivery",
+   }
+   ```
+
+3. **Update card rendering** - Modify the project image section (lines 71-76) to conditionally display the thumbnail image or fallback to the letter placeholder:
+   
+   **Current:**
+   ```tsx
+   <div className="absolute inset-0 flex items-center justify-center">
+     <span className="text-4xl font-bold text-foreground/20">
+       {project.image.charAt(0).toUpperCase()}
+     </span>
+   </div>
+   ```
+   
+   **New:**
+   ```tsx
+   <div className="absolute inset-0 flex items-center justify-center">
+     {project.thumbnail ? (
+       <img 
+         src={project.thumbnail} 
+         alt={project.title}
+         className="w-full h-full object-cover"
+       />
+     ) : (
+       <span className="text-4xl font-bold text-foreground/20">
+         {project.image.charAt(0).toUpperCase()}
+       </span>
+     )}
+   </div>
+   ```
 
 ### Technical Details
 
-This is a simple text replacement in the `contactMethods` array:
-- Line 65: Change `value: "@Atul_Thorat_Bot"` to `value: "@Atul9623"`
-- Line 66: Change `href: "https://t.me/Atul_Thorat_20260124_bot"` to `href: "https://t.me/Atul9623"`
+- The thumbnail image will be loaded from the external Gamma CDN URL
+- Using `object-cover` ensures the image fills the aspect-ratio container while maintaining proportions
+- The gradient background (`color`) will still show behind the image as a loading placeholder
+- The hover overlay and "CASE STUDY" tag remain unchanged and will display on top of the image
+- Other case study cards without thumbnails will continue showing the letter placeholder
+
