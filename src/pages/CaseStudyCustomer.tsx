@@ -28,11 +28,6 @@ const CaseStudyCustomer = () => {
               />
             </Link>
 
-            {/* Title - Center */}
-            <h1 className="text-lg font-semibold text-foreground absolute left-1/2 -translate-x-1/2">
-              Youhonk Customer App Case Study
-            </h1>
-
             {/* Back Button - Right */}
             <Link to="/#work">
               <Button variant="ghost" size="sm" className="gap-2">
