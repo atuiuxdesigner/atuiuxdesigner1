@@ -41,6 +41,7 @@ const projects: Project[] = [
     color: "from-green-500/20 to-teal-500/20",
     thumbnail: thumbnailCustomer,
     hoverIcon: iconCustomer,
+    internalLink: "/case-study/customer",
   },
   {
     title: "Youhonk Vendor App",
@@ -51,6 +52,7 @@ const projects: Project[] = [
     color: "from-orange-500/20 to-red-500/20",
     thumbnail: thumbnailVendor,
     hoverIcon: iconVendor,
+    internalLink: "/case-study/vendor",
   },
 ];
 
