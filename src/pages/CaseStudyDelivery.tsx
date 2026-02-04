@@ -32,7 +32,7 @@ const CaseStudyDelivery = () => {
             <Link to="/#work">
               <Button variant="ghost" size="sm" className="gap-2">
                 <ArrowLeft className="w-4 h-4" />
-                Back to Portfolio
+                Back
               </Button>
             </Link>
           </div>
