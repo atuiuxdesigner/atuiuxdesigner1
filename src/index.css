@@ -17,8 +17,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 50% 10%;
 
-    --primary: 50 100% 50%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 187 100% 42%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 220 20% 92%;
     --secondary-foreground: 220 50% 10%;
@@ -26,21 +26,21 @@
     --muted: 220 20% 94%;
     --muted-foreground: 220 20% 40%;
 
-    --accent: 50 100% 50%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 187 100% 42%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 220 20% 88%;
     --input: 220 20% 90%;
-    --ring: 50 100% 50%;
+    --ring: 187 100% 42%;
 
     --radius: 0.75rem;
 
     /* Custom portfolio colors */
-    --cyan: 50 100% 50%;
-    --cyan-glow: 50 100% 60%;
+    --cyan: 187 100% 42%;
+    --cyan-glow: 187 100% 50%;
     --navy-dark: 220 50% 5%;
     --navy-medium: 220 50% 10%;
     --navy-light: 220 40% 15%;
