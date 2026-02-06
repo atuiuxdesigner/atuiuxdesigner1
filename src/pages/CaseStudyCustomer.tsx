@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 import logo from "@/assets/logo.jfif";
 
 const CaseStudyCustomer = () => {
@@ -28,13 +29,16 @@ const CaseStudyCustomer = () => {
               />
             </Link>
 
-            {/* Back Button - Right */}
-            <Link to="/#work">
-              <Button variant="ghost" size="sm" className="gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                Back
-              </Button>
-            </Link>
+            {/* Theme Toggle & Back Button - Right */}
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              <Link to="/#work">
+                <Button variant="ghost" size="sm" className="gap-2">
+                  <ArrowLeft className="w-4 h-4" />
+                  Back
+                </Button>
+              </Link>
+            </div>
           </div>
         </header>
 

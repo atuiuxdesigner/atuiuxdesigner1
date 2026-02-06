@@ -122,13 +122,13 @@ const Hero = () => {
 
           {/* Right Content - Profile Image */}
           <div className="order-first lg:order-last flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <div className="relative">
+          <div className="relative">
               {/* Glow Ring */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary animate-glow-pulse blur-xl scale-110" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary animate-glow-pulse blur-xl scale-105" />
               
               {/* Profile Container */}
-              <div className="relative w-72 h-72 rounded-full border-2 border-primary/50 overflow-hidden glow-cyan">
-                <div className="absolute inset-2 rounded-full overflow-hidden">
+              <div className="relative w-56 h-56 rounded-full border-2 border-primary/50 overflow-hidden shadow-2xl glow-cyan">
+                <div className="absolute inset-2 rounded-full overflow-hidden shadow-inner">
                   <img 
                     src={profileImage} 
                     alt="Atul Thorat - UX Designer"
@@ -138,9 +138,9 @@ const Hero = () => {
               </div>
 
               {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary rounded-full animate-float" />
-              <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-primary/60 rounded-full animate-float" style={{ animationDelay: "0.5s" }} />
-              <div className="absolute top-1/2 -right-8 w-4 h-4 bg-primary/40 rounded-full animate-float" style={{ animationDelay: "1s" }} />
+              <div className="absolute -top-3 -right-3 w-6 h-6 bg-primary rounded-full animate-float" />
+              <div className="absolute -bottom-1 -left-1 w-4 h-4 bg-primary/60 rounded-full animate-float" style={{ animationDelay: "0.5s" }} />
+              <div className="absolute top-1/2 -right-6 w-3 h-3 bg-primary/40 rounded-full animate-float" style={{ animationDelay: "1s" }} />
             </div>
           </div>
         </div>

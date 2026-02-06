@@ -1,12 +1,13 @@
- import { Helmet } from "react-helmet-async";
- import { ArrowLeft, Smartphone, Users, Target, Eye, MessageSquare, Clock, CheckCircle, TrendingUp, Lightbulb, Zap, Shield, MapPin, BarChart3, Route } from "lucide-react";
- import { Link } from "react-router-dom";
- import { Button } from "@/components/ui/button";
- import { Card, CardContent } from "@/components/ui/card";
- import logo from "@/assets/logo.jfif";
- import SectionHeader from "@/components/case-study/SectionHeader";
- import MetricCard from "@/components/case-study/MetricCard";
- import ScreenShowcase from "@/components/case-study/ScreenShowcase";
+import { Helmet } from "react-helmet-async";
+import { ArrowLeft, Smartphone, Users, Target, Eye, MessageSquare, Clock, CheckCircle, TrendingUp, Lightbulb, Zap, Shield, MapPin, BarChart3, Route } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import ThemeToggle from "@/components/ThemeToggle";
+import logo from "@/assets/logo.jfif";
+import SectionHeader from "@/components/case-study/SectionHeader";
+import MetricCard from "@/components/case-study/MetricCard";
+import ScreenShowcase from "@/components/case-study/ScreenShowcase";
  
  // Lo-Fi screens data
  const lofiScreens = [
@@ -63,24 +64,27 @@
        </Helmet>
  
        <div className="min-h-screen bg-background">
-         {/* Header */}
-         <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
-           <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-             <Link to="/" className="flex items-center gap-2 group">
-               <img
-                 src={logo}
-                 alt="Atul Thorat Logo"
-                 className="h-10 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-110"
-               />
-             </Link>
-             <Link to="/#work">
-               <Button variant="ghost" size="sm" className="gap-2">
-                 <ArrowLeft className="w-4 h-4" />
-                 Back
-               </Button>
-             </Link>
-           </div>
-         </header>
+        {/* Header */}
+          <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
+            <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+              <Link to="/" className="flex items-center gap-2 group">
+                <img
+                  src={logo}
+                  alt="Atul Thorat Logo"
+                  className="h-10 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-110"
+                />
+              </Link>
+              <div className="flex items-center gap-4">
+                <ThemeToggle />
+                <Link to="/#work">
+                  <Button variant="ghost" size="sm" className="gap-2">
+                    <ArrowLeft className="w-4 h-4" />
+                    Back
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </header>
  
          <main className="pt-16">
            {/* Hero Section */}
