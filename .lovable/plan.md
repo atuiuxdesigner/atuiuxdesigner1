@@ -1,125 +1,203 @@
 
 
-## Profile Image & Case Study Header Improvements
+## AI Chatbot with Google Sheets Integration
 
 ### Overview
-This plan addresses three improvements:
-1. Add a subtle border and shadow effect to the profile image in the Hero section
-2. Reduce the profile image size from large (w-72 h-72) to medium (w-56 h-56)
-3. Update case study page headers to match the main navbar style with Theme Toggle + Back button
+Add a floating AI chatbot widget to the portfolio site that can:
+- Answer visitor questions about Atul's experience, skills, case studies, and services
+- Collect visitor information (name, email, phone, company)
+- Schedule meetings/calls based on visitor requests
+- Store all interactions and lead data in the provided Google Sheet
+
+### Architecture
+
+```text
++-------------------+       +--------------------+       +-------------------+
+|  Floating Chat    | ----> | Edge Function:     | ----> | Lovable AI        |
+|  Widget (React)   |       | /chat              |       | (Gemini Flash)    |
++-------------------+       +--------------------+       +-------------------+
+                                    |
+                                    | (when lead/meeting detected)
+                                    v
+                            +--------------------+       +-------------------+
+                            | Edge Function:     | ----> | Google Apps Script |
+                            | /save-to-sheet     |       | Web App (Sheet)   |
+                            +--------------------+       +-------------------+
+```
+
+### Google Sheets Integration Strategy
+
+Since Google Sheets API requires complex OAuth/service account setup, we'll use **Google Apps Script** deployed as a web app from your sheet. This is the simplest approach:
+
+**You'll need to do one quick setup step:**
+1. Open your Google Sheet
+2. Go to Extensions > Apps Script
+3. Paste a small script (we'll provide it)
+4. Deploy as a web app (Anyone can access)
+5. Copy the web app URL and add it as a secret
+
+The script will accept POST requests with lead data and append rows to the sheet.
+
+**Sheet Structure (auto-created by the script):**
+
+| Column | Content |
+|--------|---------|
+| Timestamp | Date/time of interaction |
+| Name | Visitor's name |
+| Email | Visitor's email |
+| Phone | Phone number (if provided) |
+| Company | Company name (if provided) |
+| Type | "inquiry" / "meeting_request" / "general" |
+| Preferred Date | For meeting requests |
+| Preferred Time | For meeting requests |
+| Message Summary | AI-generated summary of conversation |
+| Full Chat | Complete conversation log |
 
 ---
 
-### Changes
+### Implementation Steps
 
-#### 1. Profile Image Styling (Hero.tsx)
+#### Step 1: Enable Lovable Cloud
+Required for edge functions and Lovable AI access.
 
-**Current State:**
-- Profile container: `w-72 h-72` (288px × 288px) - quite large
-- Has a glow ring effect and primary border
-- Decorative floating dots around it
+#### Step 2: Create Edge Function - `/chat`
+Handles AI conversations with a system prompt containing all portfolio information (About, Skills, Case Studies, Contact details). Uses Lovable AI (Gemini Flash) with streaming responses.
 
-**Proposed Changes:**
-- Reduce size from `w-72 h-72` to `w-56 h-56` (224px × 224px) - a 22% reduction
-- Add a more refined shadow effect using `shadow-2xl`
-- Keep the existing border-2 but enhance with a subtle inner shadow
-- Proportionally reduce decorative elements
+The system prompt will include:
+- Atul's background and journey
+- Skills and expertise
+- Case study details (Youhonk Delivery, Customer, Vendor apps)
+- Contact information
+- Instructions to detect when users want to schedule meetings or share contact info
 
-| Element | Current | New |
-|---------|---------|-----|
-| Container size | w-72 h-72 | w-56 h-56 |
-| Border | border-2 border-primary/50 | border-2 border-primary/50 (keep) |
-| Shadow | glow-cyan (custom) | shadow-2xl + refined glow |
-| Decorative dots | Large (w-8, w-6, w-4) | Smaller (w-6, w-4, w-3) |
-| Glow ring | scale-110 | scale-105 (subtler) |
+The AI will use **tool calling** to trigger lead capture and meeting scheduling when detected in conversation.
 
-#### 2. Case Study Headers (3 pages)
+#### Step 3: Create Edge Function - `/save-to-sheet`
+Accepts lead/meeting data and POSTs it to the Google Apps Script web app URL (stored as a secret).
 
-**Current State:**
-All case study pages have a header with:
-- Logo on left
-- Single "Back" button on right (ghost variant)
-- Missing: Theme toggle
+#### Step 4: Create Chatbot UI Component
+A floating chat bubble in the bottom-right corner with:
+- Animated chat icon button
+- Expandable chat panel (400px wide, 500px tall)
+- Message bubbles with markdown rendering
+- Auto-scroll to latest message
+- Quick action chips ("About Atul", "View Work", "Schedule a Call")
+- Input field with send button
+- Minimized state showing unread count
 
-**Proposed Changes:**
-Add ThemeToggle component alongside the Back button, matching the main navbar pattern:
-
-```
-+------------------------------------------+
-|  [Logo]                [ThemeToggle] [Back] |
-+------------------------------------------+
-```
-
-**Files to Update:**
-- `src/pages/CaseStudyDelivery.tsx`
-- `src/pages/CaseStudyCustomer.tsx`
-- `src/pages/CaseStudyVendor.tsx`
-
-**Header Changes:**
-- Import ThemeToggle component
-- Add ThemeToggle next to the Back button
-- Wrap both in a flex container with `gap-4` spacing
-- Keep existing styling for the Back button
+#### Step 5: Add Chatbot to Index Page
+Import and render the chatbot component on the main page.
 
 ---
 
-### Files to Modify
+### Files to Create/Modify
 
-| File | Changes |
-|------|---------|
-| `src/components/Hero.tsx` | Reduce profile size, enhance shadow/border styling |
-| `src/pages/CaseStudyDelivery.tsx` | Add ThemeToggle to header |
-| `src/pages/CaseStudyCustomer.tsx` | Add ThemeToggle to header |
-| `src/pages/CaseStudyVendor.tsx` | Add ThemeToggle to header |
-
----
-
-### Technical Implementation
-
-**Hero.tsx Profile Changes:**
-```typescript
-// Glow Ring - subtler scale
-<div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary animate-glow-pulse blur-xl scale-105" />
-
-// Profile Container - smaller with enhanced shadow
-<div className="relative w-56 h-56 rounded-full border-2 border-primary/50 overflow-hidden shadow-2xl glow-cyan">
-  <div className="absolute inset-2 rounded-full overflow-hidden shadow-inner">
-    <img ... />
-  </div>
-</div>
-
-// Decorative Elements - proportionally smaller
-<div className="absolute -top-3 -right-3 w-6 h-6 ..." />
-<div className="absolute -bottom-1 -left-1 w-4 h-4 ..." />
-<div className="absolute top-1/2 -right-6 w-3 h-3 ..." />
-```
-
-**Case Study Header Pattern:**
-```typescript
-import ThemeToggle from "@/components/ThemeToggle";
-
-// In header JSX:
-<div className="flex items-center gap-4">
-  <ThemeToggle />
-  <Link to="/#work">
-    <Button variant="ghost" size="sm" className="gap-2">
-      <ArrowLeft className="w-4 h-4" />
-      Back
-    </Button>
-  </Link>
-</div>
-```
+| File | Action | Description |
+|------|--------|-------------|
+| `supabase/functions/chat/index.ts` | Create | AI chat edge function with portfolio context |
+| `supabase/functions/save-to-sheet/index.ts` | Create | Google Sheets data forwarding |
+| `supabase/config.toml` | Create/Update | Edge function config with verify_jwt = false |
+| `src/components/Chatbot.tsx` | Create | Floating chatbot UI component |
+| `src/pages/Index.tsx` | Modify | Add Chatbot component |
 
 ---
 
-### Visual Summary
+### Chatbot UI Design
 
-**Profile Image (Before → After):**
-- Size: 288px → 224px (medium, more balanced)
-- Shadow: Glow only → Glow + shadow-2xl (more depth)
-- Overall feel: More refined and professional
+**Floating Button (collapsed):**
+- Bottom-right corner, 56px circle
+- Primary color with chat icon
+- Subtle pulse animation to draw attention
+- Respects dark/light theme
 
-**Case Study Headers (Before → After):**
-- Before: Logo | [Back]
-- After: Logo | [☀️] [Back] (matching main navbar)
+**Chat Panel (expanded):**
+```text
++----------------------------------+
+| [Bot Avatar]  Atul's Assistant  X |
+|----------------------------------|
+|                                  |
+| [Bot] Hi! I'm Atul's AI         |
+| assistant. Ask me about his      |
+| work, skills, or schedule a      |
+| meeting!                         |
+|                                  |
+| [Quick Chips]                    |
+| [About Atul] [View Work]        |
+| [Schedule Call]                  |
+|                                  |
+|         [User] Tell me about     |
+|         your delivery app        |
+|                                  |
+| [Bot] The Youhonk Delivery App  |
+| is a case study where...         |
+|                                  |
+|----------------------------------|
+| [Type a message...]      [Send] |
++----------------------------------+
+```
+
+**Styling:**
+- Matches portfolio theme (dark/light mode aware)
+- Card-based with border and shadow
+- Smooth open/close animation (scale + fade)
+- Message bubbles: Bot messages left-aligned, user messages right-aligned with primary color
+- Markdown rendering for bot responses
+
+---
+
+### AI System Prompt Context
+
+The chatbot will be pre-loaded with Atul's portfolio information:
+
+- **Background**: Computer Engineering graduate, discovered UX in 2023, working at Youhonk since 2024
+- **Skills**: UX Design, UI Design, Figma, User Research, Prototyping, Usability Testing
+- **Experience**: 1+ years, 50+ sprints, 1000+ users impacted
+- **Case Studies**: Delivery App (pickup/drop partner experience), Customer App (vehicle repair booking), Vendor App (workshop management)
+- **Contact**: Email: atuiuxdesigner@gmail.com, WhatsApp: +91 96238 80889, Location: Pune, India
+- **Design Philosophy**: Focus on user-centered design, making things work beautifully
+
+When the AI detects a user wants to:
+1. **Share contact info** - AI confirms and saves to sheet
+2. **Schedule a meeting** - AI asks for preferred date/time, then saves to sheet
+3. **General inquiry** - AI answers from portfolio context
+
+---
+
+### Google Apps Script (for the user to deploy)
+
+After implementation, we'll provide a simple script to paste into Google Apps Script:
+```text
+function doPost(e) {
+  // Parse incoming data
+  // Append row to sheet
+  // Return success response
+}
+```
+
+This will be the only manual step required.
+
+---
+
+### Technical Details
+
+**Chat Edge Function:**
+- Streaming SSE responses for real-time token display
+- System prompt with full portfolio context
+- Tool calling for `save_lead` and `schedule_meeting` functions
+- Rate limit error handling (429/402)
+
+**Save-to-Sheet Edge Function:**
+- Accepts JSON with lead data
+- Forwards to Google Apps Script web app URL
+- URL stored as `GOOGLE_SHEET_WEBHOOK_URL` secret
+
+**Chatbot Component:**
+- Uses React state for messages, loading, open/closed
+- SSE streaming parser for token-by-token rendering
+- Auto-scroll via useRef
+- Responsive: full-width on mobile (< 640px)
+- z-index: 40 (below navbar at 50)
+
+**Secret Required:**
+- `GOOGLE_SHEET_WEBHOOK_URL` - The deployed Google Apps Script web app URL
 
