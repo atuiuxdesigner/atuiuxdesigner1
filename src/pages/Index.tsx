@@ -6,6 +6,7 @@ import Skills from "@/components/Skills";
 import CaseStudies from "@/components/CaseStudies";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Chatbot from "@/components/Chatbot";
 
 const Index = () => {
   return (
@@ -32,6 +33,7 @@ const Index = () => {
           <Contact />
         </main>
         <Footer />
+        <Chatbot />
       </div>
     </>
   );
