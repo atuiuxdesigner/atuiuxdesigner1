@@ -24,6 +24,12 @@ export default {
   				'Segoe UI Symbol',
   				'Noto Color Emoji'
   			],
+  			heading: [
+  				'Sora',
+  				'Inter',
+  				'system-ui',
+  				'sans-serif'
+  			],
   			serif: [
   				'ui-serif',
   				'Georgia',
