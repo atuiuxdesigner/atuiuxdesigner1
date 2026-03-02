@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
-import logo from "@/assets/logo.jfif";
+import logo from "@/assets/logo.svg";
 
 const CaseStudyCustomer = () => {
   return (
