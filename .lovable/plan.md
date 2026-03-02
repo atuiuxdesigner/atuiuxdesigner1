@@ -1,60 +1,38 @@
 
 
-## AI Chatbot Implementation with Lovable Cloud
+## Update Style Guide & Color Palette
 
-### Step 1: Enable Lovable Cloud
-Enable Lovable Cloud backend to get access to edge functions and Lovable AI.
+Based on the uploaded brand guidelines, here are the changes needed:
 
-### Step 2: Create Edge Functions
+### Color Changes
 
-**`supabase/functions/chat/index.ts`** - AI chat handler:
-- Streaming SSE responses using Lovable AI (Gemini Flash)
-- System prompt pre-loaded with Atul's full portfolio context (background, skills, case studies, contact info)
-- Tool calling to detect when users share contact info or want to schedule meetings
-- When a tool call is detected, forwards data to the save-to-sheet function
-- Handles 429/402 rate limit errors gracefully
+**New brand colors:**
+- Primary Blue: `#5b4bff` (replaces cyan in light mode and golden yellow in dark mode)
+- Deep Black: `#0b0b0f` (dark background)
+- Soft White: `#f5f6fa` (light background)
+- Neutral Gray: `#8A8A96` (muted text)
 
-**`supabase/functions/save-to-sheet/index.ts`** - Google Sheets bridge:
-- Accepts lead/meeting data as JSON
-- Forwards to Google Apps Script web app URL (stored as `GOOGLE_SHEET_WEBHOOK_URL` secret)
-- Validates input before forwarding
+Both light and dark modes will use `#5b4bff` as the primary/accent color instead of the current split (cyan for light, golden yellow for dark).
 
-**`supabase/config.toml`** - Edge function config with `verify_jwt = false` for both functions.
+### Font Changes
 
-### Step 3: Create Chatbot UI
+- Add **Sora** as the heading font (geometric, modern)
+- Keep **Inter** for body text
+- Update Google Fonts import and Tailwind config
 
-**`src/components/Chatbot.tsx`** - Floating chat widget:
-- Bottom-right floating button (56px) with chat icon and pulse animation
-- Expandable panel (400px wide, 500px tall, full-width on mobile)
-- SSE streaming with token-by-token rendering
-- Markdown rendering for bot responses
-- Quick action chips: "About Atul", "View Work", "Schedule a Call"
-- Auto-scroll to latest message
-- Dark/light theme aware
-- z-index: 40 (below navbar)
+### Files to Modify
 
-### Step 4: Integrate into Index Page
+| File | Changes |
+|------|---------|
+| `src/index.css` | Update all CSS variables for both `:root` and `.dark`, update font import, replace `--cyan` references with new primary, update glow utilities to use primary blue |
+| `tailwind.config.ts` | Add `Sora` to font family config, update cyan color references |
+| `src/components/About.tsx` | Update hardcoded SVG fill colors (`#0F1729` -> new dark) |
 
-**`src/pages/Index.tsx`** - Add the Chatbot component.
+### Key Details
 
-### Step 5: Google Apps Script Setup (Manual - User Action)
-
-After implementation, you will need to:
-1. Open your Google Sheet
-2. Go to Extensions > Apps Script
-3. Paste the provided script
-4. Deploy as web app (Anyone can access)
-5. Add the web app URL as the `GOOGLE_SHEET_WEBHOOK_URL` secret
-
-The script will auto-structure your sheet with columns: Timestamp, Name, Email, Phone, Company, Type, Preferred Date, Preferred Time, Message Summary, Full Chat.
-
-### Files Summary
-
-| File | Action |
-|------|--------|
-| `supabase/functions/chat/index.ts` | Create |
-| `supabase/functions/save-to-sheet/index.ts` | Create |
-| `supabase/config.toml` | Create/Update |
-| `src/components/Chatbot.tsx` | Create |
-| `src/pages/Index.tsx` | Modify (add Chatbot) |
+- All glow effects (`glow-cyan`, `glow-text`, `pulse-glow`, etc.) will shift from cyan/yellow to the new `#5b4bff` purple-blue
+- The `--cyan` custom property will be replaced with the primary color throughout
+- Dark mode background shifts from navy (`220 50% 5%`) to deep black (`#0b0b0f`)
+- Light mode background shifts to soft white (`#f5f6fa`)
+- Primary color becomes consistent across both themes: `#5b4bff`
 
