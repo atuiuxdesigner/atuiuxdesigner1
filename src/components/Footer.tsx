@@ -1,6 +1,6 @@
 import { Linkedin, Dribbble, Heart } from "lucide-react";
 import BehanceIcon from "@/components/icons/BehanceIcon";
-import logo from "@/assets/logo.jfif";
+import logo from "@/assets/logo.svg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

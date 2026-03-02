@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ThemeToggle from "@/components/ThemeToggle";
-import logo from "@/assets/logo.jfif";
+import logo from "@/assets/logo.svg";
 import SectionHeader from "@/components/case-study/SectionHeader";
 import MetricCard from "@/components/case-study/MetricCard";
 import ScreenShowcase from "@/components/case-study/ScreenShowcase";
