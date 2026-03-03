@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Smartphone, Users, Target, Eye, MessageSquare, Clock, CheckCircle, TrendingUp, Lightbulb, Zap, Shield, MapPin, BarChart3, Route } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -28,31 +29,34 @@ import ScreenShowcase from "@/components/case-study/ScreenShowcase";
  // Hi-Fi screens data
  const hifiScreens = [
    { image: "/case-study/delivery/hifi/01-splash.jpg", alt: "Splash Screen", caption: "Splash" },
-   { image: "/case-study/delivery/hifi/02-onboarding-1.jpg", alt: "Welcome Onboarding", caption: "Welcome" },
-   { image: "/case-study/delivery/hifi/03-onboarding-2.jpg", alt: "Stay on Route", caption: "Stay on Route" },
-   { image: "/case-study/delivery/hifi/04-onboarding-3.jpg", alt: "Be Professional", caption: "Be Professional" },
+   { image: "/case-study/delivery/hifi/02-onboarding-1.jpg", alt: "Onboarding Step 1", caption: "Onboarding 1" },
+   { image: "/case-study/delivery/hifi/03-onboarding-2.jpg", alt: "Onboarding Step 2", caption: "Onboarding 2" },
+   { image: "/case-study/delivery/hifi/04-onboarding-3.jpg", alt: "Onboarding Step 3", caption: "Onboarding 3" },
    { image: "/case-study/delivery/hifi/05-login.jpg", alt: "Login Screen", caption: "Login" },
-   { image: "/case-study/delivery/hifi/06-otp.jpg", alt: "OTP Entry", caption: "OTP Entry" },
-   { image: "/case-study/delivery/hifi/07-otp-entered.jpg", alt: "OTP Entered", caption: "OTP Verified" },
+   { image: "/case-study/delivery/hifi/06-otp.jpg", alt: "OTP Screen", caption: "OTP" },
+   { image: "/case-study/delivery/hifi/07-otp-entered.jpg", alt: "OTP Entered", caption: "OTP Entered" },
    { image: "/case-study/delivery/hifi/08-dashboard.jpg", alt: "Dashboard", caption: "Dashboard" },
-   { image: "/case-study/delivery/hifi/09-orders.jpg", alt: "Orders List", caption: "Orders" },
+   { image: "/case-study/delivery/hifi/09-orders.jpg", alt: "Orders", caption: "Orders" },
    { image: "/case-study/delivery/hifi/10-pickup-location.jpg", alt: "Pickup Location", caption: "Pickup Location" },
    { image: "/case-study/delivery/hifi/11-confirm-pickup.jpg", alt: "Confirm Pickup", caption: "Confirm Pickup" },
    { image: "/case-study/delivery/hifi/12-workshop-otp.jpg", alt: "Workshop OTP", caption: "Workshop OTP" },
    { image: "/case-study/delivery/hifi/13-workshop-location.jpg", alt: "Workshop Location", caption: "Workshop" },
-   { image: "/case-study/delivery/hifi/14-pickup-complete.jpg", alt: "Pickup Complete", caption: "Pickup Complete" },
+   { image: "/case-study/delivery/hifi/14-pickup-complete.jpg", alt: "Pickup Complete", caption: "Pickup Done" },
    { image: "/case-study/delivery/hifi/15-dropoff-location.jpg", alt: "Drop-off Location", caption: "Drop-off" },
    { image: "/case-study/delivery/hifi/16-dropoff-otp.jpg", alt: "Drop-off OTP", caption: "Drop-off OTP" },
    { image: "/case-study/delivery/hifi/17-dropoff-success.jpg", alt: "Drop-off Success", caption: "Success" },
    { image: "/case-study/delivery/hifi/18-history.jpg", alt: "History", caption: "History" },
-   { image: "/case-study/delivery/hifi/19-history-detail.jpg", alt: "History Detail", caption: "Order Details" },
-   { image: "/case-study/delivery/hifi/20-chat.jpg", alt: "Chat Support", caption: "Chat" },
+   { image: "/case-study/delivery/hifi/19-history-detail.jpg", alt: "History Detail", caption: "Detail" },
+   { image: "/case-study/delivery/hifi/20-chat.jpg", alt: "Chat", caption: "Chat" },
    { image: "/case-study/delivery/hifi/21-profile.jpg", alt: "Profile", caption: "Profile" },
    { image: "/case-study/delivery/hifi/22-id-card.jpg", alt: "ID Card", caption: "ID Card" },
-   { image: "/case-study/delivery/hifi/23-kyc.jpg", alt: "KYC Details", caption: "KYC" },
+   { image: "/case-study/delivery/hifi/23-kyc.jpg", alt: "KYC", caption: "KYC" },
  ];
- 
+
  const CaseStudyDelivery = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
    return (
      <>
        <Helmet>
@@ -71,7 +75,7 @@ import ScreenShowcase from "@/components/case-study/ScreenShowcase";
                 <img
                   src={logo}
                   alt="Atul Thorat Logo"
-                  className="h-10 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-110"
+                  className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-110"
                 />
               </Link>
               <div className="flex items-center gap-4">
