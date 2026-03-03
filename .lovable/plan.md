@@ -1,18 +1,13 @@
 
 
-## Replace Logo Across the Site
+## Add Behance CTA to Delivery Case Study
 
-The new SVG logo needs to be copied into the project and replace the current `logo.jfif` in all 5 files that reference it.
+Add a prominent CTA section just above the footer in `src/pages/CaseStudyDelivery.tsx`:
 
-### Steps
+- Import the `BehanceIcon` component
+- Insert a styled CTA block between the last section and the footer (around line 593)
+- Button opens `https://www.behance.net/gallery/244707621/UX-Case-Study-Youhonk-Delivery-Partner-App` in a new tab
+- Style: Full-width section with primary-colored button, Behance icon, and supporting text
 
-1. **Copy the uploaded SVG** to `src/assets/logo.svg`
-2. **Update imports** in all 5 files — change `import logo from "@/assets/logo.jfif"` to `import logo from "@/assets/logo.svg"`:
-   - `src/components/Navbar.tsx`
-   - `src/components/Footer.tsx`
-   - `src/pages/CaseStudyCustomer.tsx`
-   - `src/pages/CaseStudyVendor.tsx`
-   - `src/pages/CaseStudyDelivery.tsx`
-
-Since the variable name (`logo`) and usage (`src={logo}`) remain the same, only the import path changes. No other code modifications needed.
+**Single file change:** `src/pages/CaseStudyDelivery.tsx`
 
