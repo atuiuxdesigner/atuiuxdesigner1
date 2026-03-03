@@ -600,7 +600,7 @@ import ScreenShowcase from "@/components/case-study/ScreenShowcase";
                   Explore detailed screens, interactions, and the complete design process on Behance.
                 </p>
                 <a
-                  href="https://www.behance.net/gallery/244707621/UX-Case-Study-Youhonk-Delivery-Partner-App"
+                  href="https://www.behance.net/atulthorat1"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
