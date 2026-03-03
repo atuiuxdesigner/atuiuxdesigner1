@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import ThemeToggle from "@/components/ThemeToggle";
 import logo from "@/assets/logo.svg";
 import SectionHeader from "@/components/case-study/SectionHeader";
+import BehanceIcon from "@/components/icons/BehanceIcon";
 import MetricCard from "@/components/case-study/MetricCard";
 import ScreenShowcase from "@/components/case-study/ScreenShowcase";
  
@@ -591,8 +592,28 @@ import ScreenShowcase from "@/components/case-study/ScreenShowcase";
              </div>
            </section>
  
-           {/* Footer */}
-           <footer className="py-12 border-t border-border">
+            {/* Behance CTA */}
+            <section className="py-16 border-t border-border">
+              <div className="container mx-auto px-4 md:px-6 text-center max-w-2xl">
+                <h3 className="text-2xl font-bold mb-3">Want to see the full case study?</h3>
+                <p className="text-muted-foreground mb-6">
+                  Explore detailed screens, interactions, and the complete design process on Behance.
+                </p>
+                <a
+                  href="https://www.behance.net/gallery/244707621/UX-Case-Study-Youhonk-Delivery-Partner-App"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="lg" className="gap-2 text-base px-8">
+                    <BehanceIcon className="w-5 h-5" />
+                    View on Behance
+                  </Button>
+                </a>
+              </div>
+            </section>
+
+            {/* Footer */}
+            <footer className="py-12 border-t border-border">
              <div className="container mx-auto px-4 md:px-6 text-center">
                <p className="text-muted-foreground text-sm mb-4">
                  This case study represents a conceptual UX design project for portfolio purposes.
