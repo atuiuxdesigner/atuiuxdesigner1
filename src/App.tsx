@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import CaseStudyDelivery from "./pages/CaseStudyDelivery";
 import CaseStudyCustomer from "./pages/CaseStudyCustomer";
 import CaseStudyVendor from "./pages/CaseStudyVendor";
+import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <CustomCursor />
           <Toaster />
           <Sonner />
           <BrowserRouter>
