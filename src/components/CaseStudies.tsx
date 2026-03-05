@@ -7,8 +7,6 @@ import iconDelivery from "@/assets/YH_Delivery_App.svg";
 import iconCustomer from "@/assets/YH_Customer_App.svg";
 import iconVendor from "@/assets/YH_Vendor_App.svg";
 import { Link } from "react-router-dom";
-import { useParallax } from "@/hooks/use-parallax";
-import { useRef } from "react";
 
 interface Project {
   title: string;
@@ -59,19 +57,10 @@ const projects: Project[] = [
 ];
 
 const CaseStudies = () => {
-  const { getOffset, isDesktop } = useParallax();
-  const sectionRef = useRef<HTMLElement>(null);
-
   return (
-    <section id="work" className="py-24 relative overflow-hidden" ref={sectionRef}>
+    <section id="work" className="py-24 relative overflow-hidden">
       {/* Background */}
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background"
-        style={{
-          transform: `translateY(${getOffset(-0.03)}px)`,
-          willChange: "transform",
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -88,7 +77,7 @@ const CaseStudies = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {projects.map((project, index) => {
-            const parallaxMultiplier = index % 2 === 0 ? -0.04 : -0.07;
+            const hasLink = 'internalLink' in project || 'link' in project;
             
             const cardContent = (
               <article
@@ -152,16 +141,9 @@ const CaseStudies = () => {
               </article>
             );
 
-            const cardStyle = isDesktop
-              ? {
-                  transform: `translateY(${getOffset(parallaxMultiplier)}px)`,
-                  willChange: "transform" as const,
-                }
-              : undefined;
-
             if ('internalLink' in project && project.internalLink) {
               return (
-                <Link key={index} to={project.internalLink} className="block cursor-pointer" data-cursor="Explore" style={cardStyle}>
+                <Link key={index} to={project.internalLink} className="block cursor-pointer" data-cursor="Explore">
                   {cardContent}
                 </Link>
               );
@@ -169,13 +151,13 @@ const CaseStudies = () => {
             
             if ('link' in project && project.link) {
               return (
-                <a key={index} href={project.link} className="block cursor-pointer" data-cursor="Explore" style={cardStyle}>
+                <a key={index} href={project.link} className="block cursor-pointer" data-cursor="Explore">
                   {cardContent}
                 </a>
               );
             }
 
-            return <div key={index} data-cursor="Coming Soon" style={cardStyle}>{cardContent}</div>;
+            return <div key={index} data-cursor="Coming Soon">{cardContent}</div>;
           })}
         </div>
 
