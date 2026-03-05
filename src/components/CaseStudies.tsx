@@ -143,7 +143,7 @@ const CaseStudies = () => {
 
             if ('internalLink' in project && project.internalLink) {
               return (
-                <Link key={index} to={project.internalLink} className="block cursor-pointer">
+                <Link key={index} to={project.internalLink} className="block cursor-pointer" data-cursor="Explore">
                   {cardContent}
                 </Link>
               );
@@ -151,13 +151,13 @@ const CaseStudies = () => {
             
             if ('link' in project && project.link) {
               return (
-                <a key={index} href={project.link} className="block cursor-pointer">
+                <a key={index} href={project.link} className="block cursor-pointer" data-cursor="Explore">
                   {cardContent}
                 </a>
               );
             }
 
-            return <div key={index}>{cardContent}</div>;
+            return <div key={index} data-cursor="Coming Soon">{cardContent}</div>;
           })}
         </div>
 
