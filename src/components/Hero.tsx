@@ -3,12 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Linkedin, Dribbble, ChevronDown } from "lucide-react";
 import BehanceIcon from "@/components/icons/BehanceIcon";
 import profileImage from "@/assets/profile.png";
+import { useParallax } from "@/hooks/use-parallax";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const roles = ["Product Designer", "UI/UX Designer", "Design Thinker"];
   const [roleIndex, setRoleIndex] = useState(0);
+  const { scrollY, getOffset, isMobile } = useParallax();
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
@@ -34,6 +36,9 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, roleIndex, roles]);
 
+  // Scroll-based fade for scroll indicator
+  const scrollIndicatorOpacity = isMobile ? 1 : Math.max(0, 1 - scrollY / 300);
+
   return (
     <section
       id="home"
@@ -41,13 +46,37 @@ const Hero = () => {
     >
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl" />
+      
+      {/* Background orbs — margin-aware + parallax */}
+      <div
+        className="absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+        style={{
+          top: "25%",
+          right: "var(--content-margin)",
+          transform: `translateY(${getOffset(0.05)}px)`,
+          willChange: "transform",
+        }}
+      />
+      <div
+        className="absolute w-64 h-64 bg-primary/5 rounded-full blur-2xl"
+        style={{
+          bottom: "25%",
+          left: "var(--content-margin)",
+          transform: `translateY(${getOffset(0.1)}px)`,
+          willChange: "transform",
+        }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8 text-center lg:text-left">
+          {/* Left Content — text parallax */}
+          <div
+            className="space-y-8 text-center lg:text-left"
+            style={{
+              transform: `translateY(${getOffset(-0.03)}px)`,
+              willChange: "transform",
+            }}
+          >
             <div className="space-y-4">
               <p className="text-muted-foreground text-lg animate-fade-in">
                 Hello, I'm
@@ -120,9 +149,16 @@ const Hero = () => {
 
           </div>
 
-          {/* Right Content - Profile Image */}
-          <div className="order-first lg:order-last flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: "0.3s" }}>
-          <div className="relative">
+          {/* Right Content - Profile Image — parallax float */}
+          <div
+            className="order-first lg:order-last flex justify-center lg:justify-end animate-fade-in"
+            style={{
+              animationDelay: "0.3s",
+              transform: `translateY(${getOffset(-0.08)}px)`,
+              willChange: "transform",
+            }}
+          >
+            <div className="relative">
               {/* Glow Ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary animate-glow-pulse blur-xl scale-105" />
               
@@ -137,16 +173,41 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute -top-3 -right-3 w-6 h-6 bg-primary rounded-full animate-float" />
-              <div className="absolute -bottom-1 -left-1 w-4 h-4 bg-primary/60 rounded-full animate-float" style={{ animationDelay: "0.5s" }} />
-              <div className="absolute top-1/2 -right-6 w-3 h-3 bg-primary/40 rounded-full animate-float" style={{ animationDelay: "1s" }} />
+              {/* Decorative Elements — varied parallax speeds */}
+              <div
+                className="absolute -top-3 -right-3 w-6 h-6 bg-primary rounded-full"
+                style={{
+                  transform: `translateY(${getOffset(-0.12)}px)`,
+                  willChange: "transform",
+                }}
+              />
+              <div
+                className="absolute -bottom-1 -left-1 w-4 h-4 bg-primary/60 rounded-full"
+                style={{
+                  transform: `translateY(${getOffset(-0.06)}px)`,
+                  willChange: "transform",
+                }}
+              />
+              <div
+                className="absolute top-1/2 -right-6 w-3 h-3 bg-primary/40 rounded-full"
+                style={{
+                  transform: `translateY(${getOffset(-0.15)}px)`,
+                  willChange: "transform",
+                }}
+              />
             </div>
           </div>
         </div>
 
-        {/* Scroll Down Indicator - Centered */}
-        <div className="flex flex-col items-center gap-2 text-muted-foreground animate-fade-in mt-12" style={{ animationDelay: "0.6s" }}>
+        {/* Scroll Down Indicator - fades out on scroll */}
+        <div
+          className="flex flex-col items-center gap-2 text-muted-foreground animate-fade-in mt-12"
+          style={{
+            animationDelay: "0.6s",
+            opacity: scrollIndicatorOpacity,
+            transition: "opacity 0.1s ease-out",
+          }}
+        >
           <span className="text-sm">Scroll Down</span>
           <ChevronDown className="w-5 h-5 animate-scroll" />
         </div>

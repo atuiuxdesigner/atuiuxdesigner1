@@ -38,6 +38,9 @@
 
     --radius: 0.75rem;
 
+    /* Margin formula: (Screen size - Container size) / 2 */
+    --content-margin: calc((100vw - min(100vw - 3rem, 1400px)) / 2);
+
     /* Custom portfolio colors */
     --cyan: 245 100% 65%;
     --cyan-glow: 245 100% 72%;

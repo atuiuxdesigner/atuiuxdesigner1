@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import thumbnailDelivery from "@/assets/thumbnail-dp1.png";
@@ -7,6 +8,7 @@ import iconDelivery from "@/assets/YH_Delivery_App.svg";
 import iconCustomer from "@/assets/YH_Customer_App.svg";
 import iconVendor from "@/assets/YH_Vendor_App.svg";
 import { Link } from "react-router-dom";
+import { useParallax } from "@/hooks/use-parallax";
 
 interface Project {
   title: string;
@@ -57,10 +59,27 @@ const projects: Project[] = [
 ];
 
 const CaseStudies = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { getOffset, isMobile } = useParallax();
+
+  const getCardOffset = (index: number) => {
+    if (isMobile) return 0;
+    // Odd/even columns move at different rates; staggered by index
+    const speed = index % 2 === 0 ? 0.03 : 0.05;
+    const stagger = index * 8;
+    return getOffset(speed) + stagger;
+  };
+
   return (
-    <section id="work" className="py-24 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background" />
+    <section id="work" className="py-24 relative overflow-hidden" ref={sectionRef}>
+      {/* Background — subtle shift on scroll */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background"
+        style={{
+          transform: `translateY(${getOffset(0.02)}px)`,
+          willChange: "transform",
+        }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -77,8 +96,6 @@ const CaseStudies = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {projects.map((project, index) => {
-            const hasLink = 'internalLink' in project || 'link' in project;
-            
             const cardContent = (
               <article
                 className="group bg-card border border-border rounded-2xl overflow-hidden card-hover h-full"
@@ -141,9 +158,15 @@ const CaseStudies = () => {
               </article>
             );
 
+            const parallaxStyle = {
+              transform: `translateY(${getCardOffset(index)}px)`,
+              willChange: "transform" as const,
+              transition: "transform 0.1s ease-out",
+            };
+
             if ('internalLink' in project && project.internalLink) {
               return (
-                <Link key={index} to={project.internalLink} className="block cursor-pointer" data-cursor="Explore">
+                <Link key={index} to={project.internalLink} className="block cursor-pointer" data-cursor="Explore" style={parallaxStyle}>
                   {cardContent}
                 </Link>
               );
@@ -151,13 +174,13 @@ const CaseStudies = () => {
             
             if ('link' in project && project.link) {
               return (
-                <a key={index} href={project.link} className="block cursor-pointer" data-cursor="Explore">
+                <a key={index} href={project.link} className="block cursor-pointer" data-cursor="Explore" style={parallaxStyle}>
                   {cardContent}
                 </a>
               );
             }
 
-            return <div key={index} data-cursor="Coming Soon">{cardContent}</div>;
+            return <div key={index} data-cursor="Coming Soon" style={parallaxStyle}>{cardContent}</div>;
           })}
         </div>
 
