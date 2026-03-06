@@ -62,12 +62,9 @@ const CaseStudies = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { getOffset, isMobile } = useParallax();
 
-  const getCardOffset = (index: number) => {
+  const getCardOffset = () => {
     if (isMobile) return 0;
-    // Odd/even columns move at different rates; staggered by index
-    const speed = index % 2 === 0 ? 0.03 : 0.05;
-    const stagger = index * 8;
-    return getOffset(speed) + stagger;
+    return getOffset(0.03);
   };
 
   return (
@@ -159,7 +156,7 @@ const CaseStudies = () => {
             );
 
             const parallaxStyle = {
-              transform: `translateY(${getCardOffset(index)}px)`,
+              transform: `translateY(${getCardOffset()}px)`,
               willChange: "transform" as const,
               transition: "transform 0.1s ease-out",
             };
