@@ -112,7 +112,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-primary/50 text-primary hover:bg-primary/10 transition-all duration-300"
+                className="border-primary/50 text-primary dark:text-primary-foreground hover:bg-primary/10 transition-all duration-300"
                 asChild
               >
                 <a href="/Atul_Thorat_UX_Designer.pdf" download>Download Resume</a>
