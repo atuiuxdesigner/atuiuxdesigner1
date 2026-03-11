@@ -12,7 +12,11 @@ const navLinks = [
   { name: "Contact", href: "#contact" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  hideLogo?: boolean;
+}
+
+const Navbar = ({ hideLogo = false }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
