@@ -1,50 +1,33 @@
 
 
-## Apply Margin Formula & Parallax Scrolling Effects
-
-### Margin Formula Context
-
-The formula **(Screen size - Container size) ÷ 2 = Margin** ensures content is perfectly centered with equal margins. Currently, all sections use Tailwind's `container mx-auto px-6` which auto-centers with `2rem` padding and a max-width of `1400px` at 2xl. The `mx-auto` already implements this formula natively (auto margins = equal split of remaining space).
-
-However, the parallax elements (background orbs, decorative dots) sit **outside** the container with absolute positioning and use arbitrary values like `right-1/4`, `left-1/4`. These need to respect the margin formula so parallax elements align with the content grid rather than the viewport edges.
+## Cinematic Intro Animation (Updated)
 
 ### What Will Be Built
 
-**1. `src/hooks/use-parallax.ts`** — Custom hook returning scroll-based Y-offset values
-- Uses `requestAnimationFrame` for 60fps
-- Returns `scrollY` and a helper `getOffset(speed)` function
-- Disabled on mobile via `useIsMobile`
+A full-screen splash overlay that morphs through 6 logo variants on `#5b4bff`, then shrinks to match the navbar logo exactly, and reveals the website with a fade/scale effect (not slide-up).
 
-**2. Hero Section (`src/components/Hero.tsx`)** updates:
-- Background orbs: Apply parallax at different speeds (0.05, 0.1) and position them relative to the container margin formula — e.g., `calc((100vw - min(100vw - 3rem, 1400px)) / 2 + offset)` so they align with content edges
-- Profile image: Subtle upward float (`speed: -0.08`)
-- Text block: Slightly different rate (`speed: -0.03`)
-- Decorative dots: Varied speeds per dot
-- "Scroll Down" indicator: Fades out based on scroll progress
+### Animation Sequence (~4.5s)
 
-**3. Case Studies (`src/components/CaseStudies.tsx`)** updates:
-- Staggered card entry: Each card gets a vertical offset based on its index and scroll position
-- Odd/even columns move at slightly different rates (0.03 vs 0.05)
-- Section background gradient shifts subtly on scroll
+**Phase 1 — Logo Morph (0–3s):**
+Full-screen `#5b4bff` background. First logo variant centered at ~200px. Cross-fade through all 6 SVGs (~500ms each).
 
-**4. Margin-aware positioning** for all absolute/decorative elements:
-- Replace hardcoded `left-1/4`, `right-1/4` with CSS calc using the formula
-- Use CSS custom property `--content-margin: calc((100vw - min(100% - 3rem, 1400px)) / 2)` in `src/index.css` for reuse
+**Phase 2 — Shrink & Travel (3–4s):**
+Final logo scales down to exactly `h-14` (56px — matching the navbar logo class) and translates from center to the navbar logo position (top-left). Uses CSS transform with cubic-bezier easing.
 
-### Technical Details
+**Phase 3 — Content Reveal (4–4.5s):**
+Instead of sliding up, the `#5b4bff` overlay fades out while the website content fades in with a subtle scale effect (`scale(0.98) → scale(1)` + `opacity 0→1`). Content starts visible from the Home/Hero section — no artificial scroll offset. The navbar appears simultaneously.
 
-- All transforms use `translateY()` only (GPU-accelerated, no layout thrashing)
-- Small multipliers (0.03–0.15) keep effects subtle
-- `will-change: transform` on parallax elements
-- Mobile: parallax disabled, elements use static positioning
-- No new dependencies
+### Key Differences from Previous Plan
+1. Phase 2 scales logo to exactly `h-14` (56px height) to match `Navbar.tsx` line 55
+2. Phase 3 uses fade + scale reveal instead of slide-up — content visible starting from Hero/About naturally
+3. `sessionStorage` skip on repeat visits within same session
 
-### Files Changed
+### Files
 
 | File | Change |
 |------|--------|
-| `src/hooks/use-parallax.ts` | New — scroll tracking hook |
-| `src/index.css` | Add `--content-margin` CSS variable using the formula |
-| `src/components/Hero.tsx` | Add parallax to orbs, profile, text; margin-aware positioning |
-| `src/components/CaseStudies.tsx` | Add staggered parallax to cards |
+| `src/assets/logo-variants/01–06.svg` | 6 uploaded logo SVGs |
+| `src/components/IntroAnimation.tsx` | New — splash overlay with morph → shrink → fade reveal |
+| `src/pages/Index.tsx` | Add IntroAnimation, manage `introDone` state |
+| `src/components/Navbar.tsx` | Add `hideLogo` prop to hide logo during intro |
 
