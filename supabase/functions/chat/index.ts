@@ -1,10 +1,43 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
+const ALLOWED_ORIGINS = [
+  "https://atuiuxdesigner.lovable.app",
+  "https://id-preview--19c869cf-0dec-458e-9ee8-cdfadc90f436.lovable.app",
+];
+
+function getCorsHeaders(origin: string | null) {
+  const allowedOrigin =
+    origin && ALLOWED_ORIGINS.some((o) => origin.startsWith(o))
+      ? origin
+      : ALLOWED_ORIGINS[0];
+  return {
+    "Access-Control-Allow-Origin": allowedOrigin,
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+  };
+}
+
+// Simple per-IP rate limiter (resets on function cold start)
+const ipLimiter = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(req: Request, corsHeaders: Record<string, string>): Response | null {
+  const clientIP = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const now = Date.now();
+  const limit = ipLimiter.get(clientIP);
+
+  if (limit && limit.resetAt > now) {
+    if (limit.count >= 15) {
+      return new Response(
+        JSON.stringify({ error: "Too many requests. Please try again later." }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+    limit.count++;
+  } else {
+    ipLimiter.set(clientIP, { count: 1, resetAt: now + 60000 });
+  }
+  return null;
+}
 
 const SYSTEM_PROMPT = `You are Atul Thorat's AI portfolio assistant. You help visitors learn about Atul and his work. Be friendly, concise, and professional.
 
@@ -84,14 +117,21 @@ const TOOLS = [
 ];
 
 serve(async (req) => {
+  const origin = req.headers.get("origin");
+  const corsHdrs = getCorsHeaders(origin);
+
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { headers: corsHdrs });
   }
+
+  // Rate limit check
+  const rateLimitResponse = checkRateLimit(req, corsHdrs);
+  if (rateLimitResponse) return rateLimitResponse;
 
   try {
     const { messages } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
+    if (!LOVABLE_API_KEY) throw new Error("Service configuration error");
 
     const response = await fetch(
       "https://ai.gateway.lovable.dev/v1/chat/completions",
@@ -121,7 +161,7 @@ serve(async (req) => {
           }),
           {
             status: 429,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
+            headers: { ...corsHdrs, "Content-Type": "application/json" },
           }
         );
       }
@@ -132,34 +172,30 @@ serve(async (req) => {
           }),
           {
             status: 402,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
+            headers: { ...corsHdrs, "Content-Type": "application/json" },
           }
         );
       }
-      const t = await response.text();
-      console.error("AI gateway error:", response.status, t);
+      console.error("AI gateway error:", response.status);
       return new Response(
-        JSON.stringify({ error: "AI service unavailable" }),
+        JSON.stringify({ error: "AI service temporarily unavailable. Please try again." }),
         {
           status: 500,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          headers: { ...corsHdrs, "Content-Type": "application/json" },
         }
       );
     }
 
-    // We need to process the stream to handle tool calls
     const reader = response.body!.getReader();
     const decoder = new TextDecoder();
     let buffer = "";
     let toolCallAccumulator: Record<number, { name: string; arguments: string }> = {};
     let hasToolCall = false;
-    let contentChunks: string[] = [];
 
     const { readable, writable } = new TransformStream();
     const writer = writable.getWriter();
     const encoder = new TextEncoder();
 
-    // Process stream in background
     (async () => {
       try {
         while (true) {
@@ -176,7 +212,6 @@ serve(async (req) => {
 
             const jsonStr = line.slice(6).trim();
             if (jsonStr === "[DONE]") {
-              // If we accumulated tool calls, execute them
               if (hasToolCall) {
                 for (const tc of Object.values(toolCallAccumulator)) {
                   try {
@@ -196,7 +231,6 @@ serve(async (req) => {
                           }
                         );
                       }
-                      // Send a message to the user confirming the save
                       const confirmMsg = `data: ${JSON.stringify({
                         choices: [
                           {
@@ -210,7 +244,7 @@ serve(async (req) => {
                       await writer.write(encoder.encode(confirmMsg));
                     }
                   } catch (e) {
-                    console.error("Tool call error:", e);
+                    console.error("Tool call processing failed");
                   }
                 }
               }
@@ -222,7 +256,6 @@ serve(async (req) => {
               const parsed = JSON.parse(jsonStr);
               const delta = parsed.choices?.[0]?.delta;
 
-              // Check for tool calls
               if (delta?.tool_calls) {
                 hasToolCall = true;
                 for (const tc of delta.tool_calls) {
@@ -240,34 +273,31 @@ serve(async (req) => {
                 continue;
               }
 
-              // Forward content chunks
               if (delta?.content) {
                 await writer.write(encoder.encode(line + "\n\n"));
               }
             } catch {
-              // skip malformed
+              // skip malformed chunks
             }
           }
         }
       } catch (e) {
-        console.error("Stream processing error:", e);
+        console.error("Stream processing failed");
       } finally {
         await writer.close();
       }
     })();
 
     return new Response(readable, {
-      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+      headers: { ...corsHdrs, "Content-Type": "text/event-stream" },
     });
   } catch (e) {
-    console.error("chat error:", e);
+    console.error("Chat function error");
     return new Response(
-      JSON.stringify({
-        error: e instanceof Error ? e.message : "Unknown error",
-      }),
+      JSON.stringify({ error: "An error occurred. Please try again." }),
       {
         status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        headers: { ...corsHdrs, "Content-Type": "application/json" },
       }
     );
   }
