@@ -32,8 +32,14 @@ const Index = () => {
         />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
-        <Navbar />
+      <div
+        className="min-h-screen bg-background transition-all duration-500 ease-out"
+        style={{
+          opacity: introDone ? 1 : 0,
+          transform: introDone ? "scale(1)" : "scale(0.98)",
+        }}
+      >
+        <Navbar hideLogo={!introDone} />
         <main>
           <Hero />
           <About />
