@@ -1,8 +1,10 @@
+// Chat edge function v2
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const ALLOWED_ORIGINS = [
   "https://atuiuxdesigner.lovable.app",
   "https://id-preview--19c869cf-0dec-458e-9ee8-cdfadc90f436.lovable.app",
+  "https://19c869cf-0dec-458e-9ee8-cdfadc90f436.lovableproject.com",
 ];
 
 function getCorsHeaders(origin: string | null) {
