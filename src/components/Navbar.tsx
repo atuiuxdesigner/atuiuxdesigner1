@@ -12,7 +12,7 @@ const navLinks = [
   { name: "Contact", href: "#contact" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ hideLogo = false }: { hideLogo?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
@@ -53,6 +53,7 @@ const Navbar = () => {
               src={logo}
               alt="Atul Thorat Logo"
               className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-110"
+              style={{ opacity: hideLogo ? 0 : 1 }}
             />
           </a>
 
