@@ -85,8 +85,8 @@ const Navbar = ({ hideLogo = false }: { hideLogo?: boolean }) => {
           <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
             <Button
-              variant="outline"
-              className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan-sm transition-all duration-300 hover:scale-105"
               asChild
             >
               <a href="#contact">Let's Talk</a>
@@ -124,8 +124,8 @@ const Navbar = ({ hideLogo = false }: { hideLogo?: boolean }) => {
               <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
                 <ThemeToggle />
                 <Button
-                  variant="outline"
-                  className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan-sm transition-all duration-300 hover:scale-105"
                   asChild
                 >
                   <a href="#contact">Let's Talk</a>
