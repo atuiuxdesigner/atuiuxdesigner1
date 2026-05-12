@@ -83,16 +83,27 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      const { data, error } = await supabase.functions.invoke("save-contact", {
+        body: formData,
+      });
+      if (error || (data as any)?.error) {
+        throw new Error((data as any)?.error || error?.message || "Failed to send");
+      }
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      toast({
+        title: "Couldn't send message",
+        description: (err as Error).message || "Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
