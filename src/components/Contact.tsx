@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MapPin, Send } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 // Custom WhatsApp icon to match Lucide style
 const WhatsAppIcon = ({ className }: { className?: string }) => (
