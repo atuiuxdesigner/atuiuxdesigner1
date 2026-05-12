@@ -1,33 +1,21 @@
+## Problem
 
+The contact form on `www.atuiuxdesigner.com` fails with "Failed to send a request to the Edge Function." The `save-contact` edge function's CORS allowlist only includes the `.lovable.app`, preview, and `.lovableproject.com` origins. The custom domain is not allowed, so the browser blocks the request before it reaches the function. The `chat` (chatbot) function has the same allowlist and the same problem.
 
-## Cinematic Intro Animation (Updated)
+## Fix
 
-### What Will Be Built
+Add the custom domain (both `www` and apex) to the `ALLOWED_ORIGINS` array in:
 
-A full-screen splash overlay that morphs through 6 logo variants on `#5b4bff`, then shrinks to match the navbar logo exactly, and reveals the website with a fade/scale effect (not slide-up).
+1. `supabase/functions/save-contact/index.ts`
+2. `supabase/functions/chat/index.ts`
+3. `supabase/functions/save-to-sheet/index.ts` (same allowlist pattern, keep consistent)
 
-### Animation Sequence (~4.5s)
+New entries:
+- `https://www.atuiuxdesigner.com`
+- `https://atuiuxdesigner.com`
 
-**Phase 1 — Logo Morph (0–3s):**
-Full-screen `#5b4bff` background. First logo variant centered at ~200px. Cross-fade through all 6 SVGs (~500ms each).
+No frontend changes needed. Functions auto-deploy.
 
-**Phase 2 — Shrink & Travel (3–4s):**
-Final logo scales down to exactly `h-14` (56px — matching the navbar logo class) and translates from center to the navbar logo position (top-left). Uses CSS transform with cubic-bezier easing.
+## Verification
 
-**Phase 3 — Content Reveal (4–4.5s):**
-Instead of sliding up, the `#5b4bff` overlay fades out while the website content fades in with a subtle scale effect (`scale(0.98) → scale(1)` + `opacity 0→1`). Content starts visible from the Home/Hero section — no artificial scroll offset. The navbar appears simultaneously.
-
-### Key Differences from Previous Plan
-1. Phase 2 scales logo to exactly `h-14` (56px height) to match `Navbar.tsx` line 55
-2. Phase 3 uses fade + scale reveal instead of slide-up — content visible starting from Hero/About naturally
-3. `sessionStorage` skip on repeat visits within same session
-
-### Files
-
-| File | Change |
-|------|--------|
-| `src/assets/logo-variants/01–06.svg` | 6 uploaded logo SVGs |
-| `src/components/IntroAnimation.tsx` | New — splash overlay with morph → shrink → fade reveal |
-| `src/pages/Index.tsx` | Add IntroAnimation, manage `introDone` state |
-| `src/components/Navbar.tsx` | Add `hideLogo` prop to hide logo during intro |
-
+After deploy, submit the contact form from `www.atuiuxdesigner.com` and confirm a row appears in the Google Sheet, and that the chatbot streams responses from the custom domain.
