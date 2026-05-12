@@ -71,9 +71,7 @@ const CustomCursor = () => {
         setHoverState("interactive");
         // Auto-label based on element type
         const el = interactive as HTMLElement;
-        if (el.tagName === "A" || el.classList.contains("card-hover")) {
-          setCursorLabel("View");
-        } else if (el.tagName === "BUTTON" || el.getAttribute("role") === "button") {
+        if (el.tagName === "BUTTON" || el.getAttribute("role") === "button") {
           setCursorLabel("Click");
         } else {
           setCursorLabel("");
