@@ -42,9 +42,9 @@ const Index = () => {
         <Navbar hideLogo={!introDone} />
         <main>
           <Hero />
+          <CaseStudies />
           <About />
           <Skills />
-          <CaseStudies />
           <Contact />
         </main>
         <Footer />
