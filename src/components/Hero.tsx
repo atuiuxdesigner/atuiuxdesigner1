@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Dribbble, ChevronDown } from "lucide-react";
 import BehanceIcon from "@/components/icons/BehanceIcon";
@@ -6,35 +5,7 @@ import profileImage from "@/assets/profile.png";
 import { useParallax } from "@/hooks/use-parallax";
 
 const Hero = () => {
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const roles = ["Product Designer", "UI/UX Designer", "Design Thinker"];
-  const [roleIndex, setRoleIndex] = useState(0);
   const { scrollY, getOffset, isMobile } = useParallax();
-
-  useEffect(() => {
-    const currentRole = roles[roleIndex];
-    const typeSpeed = isDeleting ? 50 : 100;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayText.length < currentRole.length) {
-          setDisplayText(currentRole.slice(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(currentRole.slice(0, displayText.length - 1));
-        } else {
-          setIsDeleting(false);
-          setRoleIndex((prev) => (prev + 1) % roles.length);
-        }
-      }
-    }, typeSpeed);
-
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, roleIndex, roles]);
 
   // Scroll-based fade for scroll indicator
   const scrollIndicatorOpacity = isMobile ? 1 : Math.max(0, 1 - scrollY / 300);
@@ -78,26 +49,20 @@ const Hero = () => {
             }}
           >
             <div className="space-y-4">
-              <p className="text-muted-foreground text-lg animate-fade-in">
-                Hello, I'm
+              <p className="text-primary text-sm md:text-base font-medium uppercase tracking-widest animate-fade-in">
+                Atul Thorat — Product Designer
               </p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground animate-fade-in" style={{ animationDelay: "0.1s" }}>
-                Atul{" "}
-                <span className="text-primary glow-text">Thorat</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
+                Designing{" "}
+                <span className="text-primary glow-text">logistics & mobility</span>{" "}
+                products that move at scale
               </h1>
-              <div className="h-12 flex items-center justify-center lg:justify-start" style={{ animationDelay: "0.2s" }}>
-                <span className="text-2xl md:text-3xl text-muted-foreground">
-                  {displayText}
-                  <span className="inline-block w-0.5 h-8 bg-primary ml-1 animate-pulse" />
-                </span>
-              </div>
             </div>
 
-            <p className="text-muted-foreground text-lg max-w-lg mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              I craft intuitive digital experiences that bridge the gap between
-              users and technology. With a passion for clean design and
-              user-centered thinking, I transform complex problems into elegant
-              solutions.
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              I design SaaS and mobile experiences that move goods and people — from
+              workshop pickups to customer bookings and vendor operations. Most recently,
+              I shipped UX for three apps powering Youhonk's vehicle service platform.
             </p>
 
             {/* CTA Buttons */}
@@ -107,7 +72,7 @@ const Hero = () => {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan-sm transition-all duration-300 hover:scale-105"
                 asChild
               >
-                <a href="#work">View My Work</a>
+                <a href="#work">See Case Studies</a>
               </Button>
               <Button
                 size="lg"
