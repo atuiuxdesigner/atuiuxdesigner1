@@ -1,0 +1,10 @@
+# Atul Thorat — UX Designer Portfolio
+
+> Portfolio of Atul Thorat, a Product/UX Designer specialising in logistics SaaS and mobile app experiences. Showcases the Youhonk product suite (delivery, customer, vendor apps) along with skills, background, and contact information.
+
+## Pages
+
+- [Home](/): Hero, case studies, skills, about, and contact for Atul Thorat.
+- [Youhonk Delivery App Case Study](/case-study/delivery): Designing a real-time delivery partner app for vehicle pickup and drop.
+- [Youhonk Customer App Case Study](/case-study/customer): Customer-facing app for booking vehicle repair services.
+- [Youhonk Vendor App Case Study](/case-study/vendor): Vendor portal for managing bookings and workshop operations.
