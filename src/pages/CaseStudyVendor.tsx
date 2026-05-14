@@ -14,6 +14,21 @@ const CaseStudyVendor = () => {
           name="description"
           content="UX Case Study: Designing the vendor portal for managing bookings and workshop operations."
         />
+        <link rel="canonical" href="https://atuiuxdesigner.lovable.app/case-study/vendor" />
+        <meta property="og:title" content="Youhonk Vendor App Case Study | Atul Thorat" />
+        <meta property="og:description" content="UX Case Study: Designing the vendor portal for managing bookings and workshop operations." />
+        <meta property="og:url" content="https://atuiuxdesigner.lovable.app/case-study/vendor" />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:title" content="Youhonk Vendor App Case Study | Atul Thorat" />
+        <meta name="twitter:description" content="UX Case Study: Designing the vendor portal for managing bookings and workshop operations." />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          headline: "Youhonk Vendor App Case Study",
+          description: "UX Case Study: Designing the vendor portal for managing bookings and workshop operations.",
+          author: { "@type": "Person", name: "Atul Thorat" },
+          url: "https://atuiuxdesigner.lovable.app/case-study/vendor"
+        })}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

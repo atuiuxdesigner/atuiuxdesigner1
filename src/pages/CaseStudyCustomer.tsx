@@ -14,6 +14,21 @@ const CaseStudyCustomer = () => {
           name="description"
           content="UX Case Study: Designing the customer-facing app for booking vehicle repair services."
         />
+        <link rel="canonical" href="https://atuiuxdesigner.lovable.app/case-study/customer" />
+        <meta property="og:title" content="Youhonk Customer App Case Study | Atul Thorat" />
+        <meta property="og:description" content="UX Case Study: Designing the customer-facing app for booking vehicle repair services." />
+        <meta property="og:url" content="https://atuiuxdesigner.lovable.app/case-study/customer" />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:title" content="Youhonk Customer App Case Study | Atul Thorat" />
+        <meta name="twitter:description" content="UX Case Study: Designing the customer-facing app for booking vehicle repair services." />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          headline: "Youhonk Customer App Case Study",
+          description: "UX Case Study: Designing the customer-facing app for booking vehicle repair services.",
+          author: { "@type": "Person", name: "Atul Thorat" },
+          url: "https://atuiuxdesigner.lovable.app/case-study/customer"
+        })}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

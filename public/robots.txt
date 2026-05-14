@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://atuiuxdesigner.lovable.app/sitemap.xml

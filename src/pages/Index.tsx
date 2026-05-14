@@ -30,6 +30,23 @@ const Index = () => {
           name="keywords"
           content="UI/UX Designer, Product Designer, Atul Thorat, Portfolio, Design, User Experience"
         />
+        <link rel="canonical" href="https://atuiuxdesigner.lovable.app/" />
+        <meta property="og:title" content="Atul Thorat | Product Designer & UI/UX Expert" />
+        <meta property="og:description" content="Portfolio of Atul Thorat — Product Designer crafting intuitive digital experiences across logistics SaaS and mobile apps." />
+        <meta property="og:url" content="https://atuiuxdesigner.lovable.app/" />
+        <meta name="twitter:title" content="Atul Thorat | Product Designer & UI/UX Expert" />
+        <meta name="twitter:description" content="Portfolio of Atul Thorat — Product Designer crafting intuitive digital experiences across logistics SaaS and mobile apps." />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Atul Thorat",
+          jobTitle: "UX Designer",
+          url: "https://atuiuxdesigner.lovable.app/",
+          sameAs: [
+            "https://www.linkedin.com/in/atul-thorat-6065b8169/",
+            "https://www.behance.net/atulthorat1"
+          ]
+        })}</script>
       </Helmet>
 
       <div
