@@ -9,18 +9,18 @@ const CaseStudyVendor = () => {
   return (
     <>
       <Helmet>
-        <title>Youhonk Vendor App Case Study | Atul Thorat</title>
+        <title>Youhonk Vendor App UX Case Study — Atul Thorat</title>
         <meta
           name="description"
-          content="UX Case Study: Designing the vendor portal for managing bookings and workshop operations."
+          content="Designing a vendor portal that makes managing bookings and workshop operations feel effortless. Case study coming soon."
         />
         <link rel="canonical" href="https://atuiuxdesigner.lovable.app/case-study/vendor" />
-        <meta property="og:title" content="Youhonk Vendor App Case Study | Atul Thorat" />
-        <meta property="og:description" content="UX Case Study: Designing the vendor portal for managing bookings and workshop operations." />
+        <meta property="og:title" content="Youhonk Vendor App UX Case Study — Atul Thorat" />
+        <meta property="og:description" content="Designing a vendor portal that makes managing bookings and workshop operations feel effortless." />
         <meta property="og:url" content="https://atuiuxdesigner.lovable.app/case-study/vendor" />
         <meta property="og:type" content="article" />
-        <meta name="twitter:title" content="Youhonk Vendor App Case Study | Atul Thorat" />
-        <meta name="twitter:description" content="UX Case Study: Designing the vendor portal for managing bookings and workshop operations." />
+        <meta name="twitter:title" content="Youhonk Vendor App UX Case Study — Atul Thorat" />
+        <meta name="twitter:description" content="Designing a vendor portal that makes managing bookings and workshop operations feel effortless." />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CreativeWork",
@@ -68,9 +68,7 @@ const CaseStudyVendor = () => {
                 Case Study Coming Soon
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
-                The detailed case study for the Youhonk Vendor App is currently being prepared. 
-                Check back soon to explore how we designed the vendor portal enabling service providers 
-                to manage bookings and workshop operations efficiently.
+                I'm writing this one up. Check back soon to see how I helped vendors manage bookings and workshop ops with ease.
               </p>
               <Link to="/#work">
                 <Button variant="outline" className="gap-2">

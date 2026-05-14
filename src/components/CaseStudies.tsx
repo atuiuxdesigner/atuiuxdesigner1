@@ -24,7 +24,7 @@ const projects: Project[] = [
   {
     title: "Youhonk Delivery App",
     description:
-      "Designed the complete user experience for workshop staff to efficiently manage vehicle pickup & drop operations. Crafted end-to-end user flows and low-fidelity wireframes for seamless handoff to visual designers.",
+      "A real-time app helping workshop staff pick up and drop off vehicles with ease. End-to-end flows and wireframes I loved building.",
     tags: ["UX Research", "UI Design", "Prototyping"],
     image: "delivery",
     color: "from-blue-500/20 to-purple-500/20",
@@ -35,7 +35,7 @@ const projects: Project[] = [
   {
     title: "Youhonk Customer App",
     description:
-      "Contributed to designing the customer-facing app for booking vehicle repair services, transforming the traditional repair journey into a seamless digital experience.",
+      "A friendly mobile app to book vehicle repairs in a few taps. Turns a stressful errand into a calm, simple journey.",
     tags: ["Mobile Design", "User Testing", "Design System"],
     image: "customer",
     color: "from-green-500/20 to-teal-500/20",
@@ -46,7 +46,7 @@ const projects: Project[] = [
   {
     title: "Youhonk Vendor App",
     description:
-      "Helped design the vendor portal enabling service providers to manage bookings, customer requests, and workshop operations efficiently.",
+      "A vendor portal that makes managing bookings and workshop operations feel effortless. Built with real workshop teams in mind.",
     tags: ["Product Design", "Wireframing", "Usability"],
     image: "mentor",
     color: "from-orange-500/20 to-red-500/20",
@@ -69,8 +69,7 @@ const CaseStudies = () => {
             Case <span className="text-primary glow-text">Studies</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Explore my recent projects where I've transformed complex challenges
-            into elegant, user-centered solutions.
+            A few projects close to my heart — real problems, simple solutions.
           </p>
         </div>
 

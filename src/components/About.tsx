@@ -67,7 +67,7 @@ const journeySteps = [
     title: "The Unexpected Path",
     subtitle: "Accidental Engineer",
     description:
-      "Took admission in Computer Engineering without a clear direction. Everything felt hard, concepts were overwhelming, and I struggled to keep up with my peers.",
+      "Started Computer Engineering with no real plan. Concepts felt heavy and I struggled to keep up — but I kept showing up.",
     side: "left",
   },
   {
@@ -75,7 +75,7 @@ const journeySteps = [
     title: "The Struggle",
     subtitle: "Persistence Through Failure",
     description:
-      "Failed exams, had to drop a year. But I refused to give up. After countless attempts and sleepless nights, I finally completed my Bachelor's degree during the COVID-19 pandemic.",
+      "Failed exams, dropped a year, refused to quit. Finished my Bachelor's during COVID after a lot of late nights.",
     side: "right",
   },
   {
@@ -83,7 +83,7 @@ const journeySteps = [
     title: "The Dark Period",
     subtitle: "Post-COVID Reality",
     description:
-      "Companies wouldn't hire graduates from the COVID period. Felt unguided and lost. Started working in a Non-IT field just to survive, but my creative spirit kept searching for more.",
+      "Hiring froze for COVID-era grads. I took a non-IT job to survive, but my creative side kept nudging me forward.",
     side: "left",
   },
   {
@@ -91,7 +91,7 @@ const journeySteps = [
     title: "The Awakening",
     subtitle: "Discovering UX Design",
     description:
-      "Found my calling in UX Design — a field that solves human psychology and creates peaceful paths for users. Like Lord Buddha's teachings, it's about understanding suffering and easing it through thoughtful solutions.",
+      "Found UX design and finally felt at home. It's about understanding people and quietly making their lives easier.",
     side: "right",
   },
   {
@@ -99,7 +99,7 @@ const journeySteps = [
     title: "The Dream Realized",
     subtitle: "Landing at Youhonk",
     description:
-      "After dedicated practice in UX+UI, I landed my dream job at Youhonk, a Pune-based startup connecting users with trusted vehicle repair services. Now 1+ years into creating meaningful experiences.",
+      "Joined Youhonk in Pune as their UX designer. A year in, still loving every sprint and every user story.",
     side: "left",
   },
 ];
@@ -118,8 +118,7 @@ const About = () => {
             <span className="text-primary glow-text">Purpose in Design</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Every designer has a story. Here's mine—a journey of passion,
-            persistence, and purpose.
+            A short story about how I found design — and why I still love it.
           </p>
         </div>
 

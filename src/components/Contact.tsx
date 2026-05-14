@@ -120,8 +120,7 @@ const Contact = () => {
             <span className="text-primary glow-text">Amazing</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a project in mind? Let's collaborate and bring your vision to
-            life.
+            Got an idea? I'd love to hear it — drop a message below.
           </p>
         </div>
 

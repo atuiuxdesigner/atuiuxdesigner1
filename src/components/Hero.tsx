@@ -55,14 +55,14 @@ const Hero = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
                 Designing{" "}
                 <span className="text-primary glow-text">logistics & mobility</span>{" "}
-                products that move at scale
+                apps people love using
               </h1>
             </div>
 
             <p className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              I design SaaS and mobile experiences that move goods and people — from
-              workshop pickups to customer bookings and vendor operations. Most recently,
-              I shipped UX for three apps powering Youhonk's vehicle service platform.
+              I'm a product designer based in Pune. I shape mobile and SaaS
+              experiences — most recently three apps powering Youhonk's vehicle
+              service platform. Happy to have you here.
             </p>
 
             {/* CTA Buttons */}
