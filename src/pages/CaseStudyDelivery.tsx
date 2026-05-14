@@ -66,6 +66,21 @@ import ScreenShowcase from "@/components/case-study/ScreenShowcase";
            name="description"
            content="UX Case Study: Designing a Real-Time Delivery Partner App for Vehicle Pickup & Drop - transforming the weakest link into a differentiating experience."
          />
+         <link rel="canonical" href="https://atuiuxdesigner.lovable.app/case-study/delivery" />
+         <meta property="og:title" content="Youhonk Delivery App Case Study | Atul Thorat" />
+         <meta property="og:description" content="UX Case Study: Designing a real-time delivery partner app for vehicle pickup & drop — turning the weakest link into a differentiating experience." />
+         <meta property="og:url" content="https://atuiuxdesigner.lovable.app/case-study/delivery" />
+         <meta property="og:type" content="article" />
+         <meta name="twitter:title" content="Youhonk Delivery App Case Study | Atul Thorat" />
+         <meta name="twitter:description" content="UX Case Study: Designing a real-time delivery partner app for vehicle pickup & drop — turning the weakest link into a differentiating experience." />
+         <script type="application/ld+json">{JSON.stringify({
+           "@context": "https://schema.org",
+           "@type": "Article",
+           headline: "Youhonk Delivery App Case Study",
+           description: "Designing a real-time delivery partner app for vehicle pickup and drop.",
+           author: { "@type": "Person", name: "Atul Thorat" },
+           url: "https://atuiuxdesigner.lovable.app/case-study/delivery"
+         })}</script>
        </Helmet>
  
        <div className="min-h-screen bg-background">
