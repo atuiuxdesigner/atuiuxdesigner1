@@ -61,26 +61,26 @@ const skillCategories: SkillCategory[] = [
   {
     title: "UX Design",
     skills: [
-      { name: "User Research", level: "Expert", evidence: "Led discovery for 3 product launches" },
-      { name: "Wireframing", level: "Advanced", evidence: "Delivered 50+ sprint deliverables" },
-      { name: "Prototyping", level: "Expert", evidence: "Created hi-fi prototypes in Figma" },
-      { name: "Usability Testing", level: "Advanced", evidence: "Conducted 20+ user testing sessions" },
+      { name: "User Research", level: "Expert", evidence: "Led 3 product discoveries" },
+      { name: "Wireframing", level: "Advanced", evidence: "50+ sprint deliverables" },
+      { name: "Prototyping", level: "Expert", evidence: "Hi-fi prototypes in Figma" },
+      { name: "Usability Testing", level: "Advanced", evidence: "20+ user sessions" },
     ],
   },
   {
     title: "UI Design",
     skills: [
-      { name: "Visual Design", level: "Expert", evidence: "Designed enterprise dashboards" },
+      { name: "Visual Design", level: "Expert", evidence: "Enterprise dashboards" },
       { name: "Design Systems", level: "Advanced", evidence: "Built component libraries" },
-      { name: "Typography", level: "Proficient", evidence: "Applied type hierarchy best practices" },
-      { name: "Color Theory", level: "Advanced", evidence: "Created accessible color palettes" },
+      { name: "Typography", level: "Proficient", evidence: "Clear type hierarchy" },
+      { name: "Color Theory", level: "Advanced", evidence: "Accessible palettes" },
     ],
   },
   {
     title: "Tools",
     skills: [
-      { name: "Figma", level: "Expert", evidence: "Primary design tool" },
-      { name: "Adobe XD", level: "Proficient", evidence: "Cross-platform collaboration" },
+      { name: "Figma", level: "Expert", evidence: "My daily go-to" },
+      { name: "Adobe XD", level: "Proficient", evidence: "Cross-team handoffs" },
       { name: "Sketch", level: "Proficient", evidence: "Legacy project support" },
       { name: "Framer", level: "Proficient", evidence: "Interactive prototypes" },
     ],
@@ -88,10 +88,10 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Soft Skills",
     skills: [
-      { name: "Communication", level: "Expert", evidence: "Stakeholder presentations" },
-      { name: "Problem Solving", level: "Expert", evidence: "Complex design challenges" },
-      { name: "Collaboration", level: "Advanced", evidence: "Cross-functional teams" },
-      { name: "Adaptability", level: "Advanced", evidence: "Agile environments" },
+      { name: "Communication", level: "Expert", evidence: "Clear stakeholder updates" },
+      { name: "Problem Solving", level: "Expert", evidence: "Untangling tough flows" },
+      { name: "Collaboration", level: "Advanced", evidence: "Cross-functional teamwork" },
+      { name: "Adaptability", level: "Advanced", evidence: "Thrive in agile sprints" },
     ],
   },
 ];
@@ -193,8 +193,7 @@ const Skills = () => {
             Skills & <span className="text-primary glow-text">Expertise</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A combination of technical proficiency and soft skills that enable me
-            to create impactful digital experiences.
+            The toolkit I reach for every day — craft, tools, and people skills.
           </p>
         </div>
 

@@ -21,21 +21,21 @@ const Index = () => {
         <IntroAnimation onComplete={() => setIntroDone(true)} />
       )}
       <Helmet>
-        <title>Atul Thorat | Product Designer & UI/UX Expert</title>
+        <title>Atul Thorat — UX Designer in Pune | Mobile & SaaS Portfolio</title>
         <meta
           name="description"
-          content="I'm Atul Thorat, a Product Designer crafting intuitive digital experiences. View my portfolio of UI/UX case studies and design work."
+          content="Hi, I'm Atul — a UX designer in Pune crafting friendly mobile and SaaS apps for logistics and mobility. Take a peek at my work."
         />
         <meta
           name="keywords"
-          content="UI/UX Designer, Product Designer, Atul Thorat, Portfolio, Design, User Experience"
+          content="UX Designer, Product Designer, Atul Thorat, Pune, Mobile App Design, SaaS, Logistics"
         />
         <link rel="canonical" href="https://atuiuxdesigner.lovable.app/" />
-        <meta property="og:title" content="Atul Thorat | Product Designer & UI/UX Expert" />
-        <meta property="og:description" content="Portfolio of Atul Thorat — Product Designer crafting intuitive digital experiences across logistics SaaS and mobile apps." />
+        <meta property="og:title" content="Atul Thorat — UX Designer in Pune" />
+        <meta property="og:description" content="Friendly UX designer crafting mobile & SaaS apps for logistics and mobility. Come say hi." />
         <meta property="og:url" content="https://atuiuxdesigner.lovable.app/" />
-        <meta name="twitter:title" content="Atul Thorat | Product Designer & UI/UX Expert" />
-        <meta name="twitter:description" content="Portfolio of Atul Thorat — Product Designer crafting intuitive digital experiences across logistics SaaS and mobile apps." />
+        <meta name="twitter:title" content="Atul Thorat — UX Designer in Pune" />
+        <meta name="twitter:description" content="Friendly UX designer crafting mobile & SaaS apps for logistics and mobility. Come say hi." />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",

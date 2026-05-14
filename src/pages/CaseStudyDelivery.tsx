@@ -61,18 +61,18 @@ import ScreenShowcase from "@/components/case-study/ScreenShowcase";
    return (
      <>
        <Helmet>
-         <title>Youhonk Delivery App Case Study | Atul Thorat</title>
+         <title>Youhonk Delivery App UX Case Study — Atul Thorat</title>
          <meta
            name="description"
-           content="UX Case Study: Designing a Real-Time Delivery Partner App for Vehicle Pickup & Drop - transforming the weakest link into a differentiating experience."
+           content="A friendly look at designing a real-time delivery app for vehicle pickup & drop — flows, screens, and the calls I made along the way."
          />
          <link rel="canonical" href="https://atuiuxdesigner.lovable.app/case-study/delivery" />
-         <meta property="og:title" content="Youhonk Delivery App Case Study | Atul Thorat" />
-         <meta property="og:description" content="UX Case Study: Designing a real-time delivery partner app for vehicle pickup & drop — turning the weakest link into a differentiating experience." />
+         <meta property="og:title" content="Youhonk Delivery App UX Case Study — Atul Thorat" />
+         <meta property="og:description" content="A friendly look at designing a real-time delivery app for vehicle pickup & drop." />
          <meta property="og:url" content="https://atuiuxdesigner.lovable.app/case-study/delivery" />
          <meta property="og:type" content="article" />
-         <meta name="twitter:title" content="Youhonk Delivery App Case Study | Atul Thorat" />
-         <meta name="twitter:description" content="UX Case Study: Designing a real-time delivery partner app for vehicle pickup & drop — turning the weakest link into a differentiating experience." />
+         <meta name="twitter:title" content="Youhonk Delivery App UX Case Study — Atul Thorat" />
+         <meta name="twitter:description" content="A friendly look at designing a real-time delivery app for vehicle pickup & drop." />
          <script type="application/ld+json">{JSON.stringify({
            "@context": "https://schema.org",
            "@type": "Article",

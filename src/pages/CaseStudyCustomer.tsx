@@ -9,18 +9,18 @@ const CaseStudyCustomer = () => {
   return (
     <>
       <Helmet>
-        <title>Youhonk Customer App Case Study | Atul Thorat</title>
+        <title>Youhonk Customer App UX Case Study — Atul Thorat</title>
         <meta
           name="description"
-          content="UX Case Study: Designing the customer-facing app for booking vehicle repair services."
+          content="Designing a friendly mobile app that turns booking a vehicle repair into a calm, simple journey. Case study coming soon."
         />
         <link rel="canonical" href="https://atuiuxdesigner.lovable.app/case-study/customer" />
-        <meta property="og:title" content="Youhonk Customer App Case Study | Atul Thorat" />
-        <meta property="og:description" content="UX Case Study: Designing the customer-facing app for booking vehicle repair services." />
+        <meta property="og:title" content="Youhonk Customer App UX Case Study — Atul Thorat" />
+        <meta property="og:description" content="Designing a friendly app that turns booking a vehicle repair into a calm, simple journey." />
         <meta property="og:url" content="https://atuiuxdesigner.lovable.app/case-study/customer" />
         <meta property="og:type" content="article" />
-        <meta name="twitter:title" content="Youhonk Customer App Case Study | Atul Thorat" />
-        <meta name="twitter:description" content="UX Case Study: Designing the customer-facing app for booking vehicle repair services." />
+        <meta name="twitter:title" content="Youhonk Customer App UX Case Study — Atul Thorat" />
+        <meta name="twitter:description" content="Designing a friendly app that turns booking a vehicle repair into a calm, simple journey." />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CreativeWork",
@@ -68,9 +68,7 @@ const CaseStudyCustomer = () => {
                 Case Study Coming Soon
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
-                The detailed case study for the Youhonk Customer App is currently being prepared. 
-                Check back soon to explore how we transformed the traditional vehicle repair journey 
-                into a seamless digital experience.
+                I'm putting this one together with care. Pop back soon to see how I made booking a vehicle repair feel calm and simple.
               </p>
               <Link to="/#work">
                 <Button variant="outline" className="gap-2">
