@@ -1,58 +1,63 @@
 ## Goal
-Rewrite the visible copy across the portfolio so it reads shorter, warmer, and more SEO‑friendly — keeping the same layout, components, and functionality. Sentences become snappier, sprinkled with light, friendly emotion (no heavy emoji spam), and tuned around target keywords: "UX designer", "product designer", "mobile app design", "logistics & mobility design", "Pune".
+Replace the two "Coming Soon" placeholders (`/case-study/customer`, `/case-study/vendor`) with full Behance-style case study pages that mirror `CaseStudyDelivery.tsx`, sourced from the Figma files via the Lovable Desktop Figma MCP.
 
-## Tone rules
-- Short sentences, active voice, ~12–18 words max.
-- Friendly, human — first person, occasional warmth ("happy to chat", "loved building this").
-- One emoji max per section, only where it fits naturally.
-- Keep proper nouns (Youhonk, Figma) intact.
+## Prerequisites (one-time, before step 1)
+- Lovable Desktop app installed and running.
+- Figma Desktop in **Dev Mode** with **"Enable desktop MCP server"** turned on.
+- Local MCP server connected in Lovable → Settings → Connectors → Local MCP servers.
+- For each step, you select the relevant frame in Figma so the MCP returns that node's metadata, tokens, and exports.
 
-## Scope of edits
+## Reusable building blocks (already in repo)
+- `src/components/case-study/SectionHeader.tsx`
+- `src/components/case-study/PhoneMockup.tsx`
+- `src/components/case-study/ScreenShowcase.tsx`
+- `src/components/case-study/MetricCard.tsx`
+- Page skeleton, header, Helmet/JSON-LD pattern: copy from `src/pages/CaseStudyDelivery.tsx`.
 
-### 1. `index.html` — sitewide head
-- `<title>`: "Atul Thorat — UX Designer in Pune | Mobile & SaaS Portfolio"
-- `<meta description>`: warm 150‑char pitch with keywords.
-- Update `og:title`, `og:description`, `twitter:title`, `twitter:description` to match.
+No new shared components are planned; we reuse the Delivery template verbatim and only swap content + screen arrays.
 
-### 2. `src/components/Hero.tsx`
-- Eyebrow: keep "Atul Thorat — Product Designer".
-- H1: shorter, e.g. "Designing **logistics & mobility** apps people actually enjoy using."
-- Sub: 1–2 friendly sentences, ~25 words, mention Youhonk + mobile/SaaS.
+## Step-by-step plan (5 credits, 1 message each)
 
-### 3. `src/components/CaseStudies.tsx`
-- Section subhead: shorter, friendlier ("A few projects close to my heart.").
-- Each project description: trim to 2 short sentences, add a light human note.
+### Step 1 — Pull Figma assets for Customer app
+- In Figma Desktop, select the Customer case study cover frame and each Lo-Fi / Hi-Fi screen frame.
+- Use the Figma MCP to fetch frame metadata (titles, captions, ordering) and export each screen as JPG @1x and @2x.
+- Save exports to `public/case-study/customer/lofi/NN-name.jpg` and `public/case-study/customer/hifi/NN-name.jpg` using the same numbering convention as Delivery.
+- Capture content blocks from Figma (Project Snapshot, Challenge, Problem Discovery cards, Objectives, Process, Metrics, Outcome quote) into a short content JSON saved at `.lovable/case-study-customer.content.json` for step 2.
 
-### 4. `src/components/Skills.tsx`
-- Section subhead: one warm line ("The toolkit I reach for every day.").
-- Tighten each `evidence` string to ≤6 words.
+### Step 2 — Build Customer case study page
+- Replace `src/pages/CaseStudyCustomer.tsx` with a clone of `CaseStudyDelivery.tsx`:
+  - Update `Helmet` (title, description, og/twitter, JSON-LD `Article` headline + url).
+  - Swap `lofiScreens` / `hifiScreens` arrays to point at `/case-study/customer/...` paths from step 1.
+  - Replace hero copy, Project Snapshot, Challenge, Existing Ecosystem, Problem Discovery, Strategic Insight, Objectives, Process, Metrics, Outcome sections with the content JSON from step 1.
+  - Keep the existing fixed header, ThemeToggle, back link, and Behance link pattern.
+- Verify by visiting `/case-study/customer` in preview, scrolling through, checking responsive behavior at the current 1067px viewport and at mobile width.
 
-### 5. `src/components/About.tsx`
-- Section subhead: one short, warm line.
-- Each `journeySteps[].description`: trim to 1–2 sentences, keep emotional arc.
-- Quote block: keep as is (already concise).
+### Step 3 — Pull Figma assets for Vendor app
+- Same flow as step 1, but for the Vendor file.
+- Export to `public/case-study/vendor/lofi/...` and `public/case-study/vendor/hifi/...`.
+- Save content snapshot to `.lovable/case-study-vendor.content.json`.
+- Note vendor-specific sections that differ (e.g. dashboard analytics, multi-role flows) so step 4 can include them.
 
-### 6. `src/components/Contact.tsx`
-- Section subhead: friendlier ("Got an idea? I'd love to hear it.").
+### Step 4 — Build Vendor case study page
+- Replace `src/pages/CaseStudyVendor.tsx` with the same template as Customer.
+  - Update Helmet + JSON-LD for vendor URL.
+  - Swap screen arrays to `/case-study/vendor/...`.
+  - Fill all sections from the vendor content JSON.
+  - If vendor needs an extra section not present in Delivery (e.g. "Dashboard Analytics"), add it inline using existing primitives (`Card`, `SectionHeader`, `MetricCard`) — no new shared components.
+- Verify in preview at `/case-study/vendor`.
 
-### 7. `src/pages/Index.tsx` Helmet
-- Tighten `<title>` and description to match new sitewide tone.
-- Keep canonical, og:url, JSON‑LD untouched.
-
-### 8. Case study pages (`CaseStudyDelivery.tsx`, `CaseStudyCustomer.tsx`, `CaseStudyVendor.tsx`)
-- Update `<title>` to "{App Name} UX Case Study — Atul Thorat".
-- Rewrite meta description (≤155 chars) with warm, keyword‑rich copy.
-- Update `og:` and `twitter:` title/description to mirror.
-- For Customer/Vendor "coming soon" body copy: shorter, friendlier 2‑sentence version.
-
-### 9. `public/llms.txt`
-- Tighten descriptions per route to one warm sentence each.
+### Step 5 — Polish, link-up, SEO, QA
+- `src/components/CaseStudies.tsx`: confirm both cards now route to live pages; remove any "Coming Soon" affordance (e.g. `data-cursor="Coming Soon"` if still present, swap to `"Explore"`).
+- `public/sitemap.xml`: bump `lastmod` for the two case study URLs.
+- `public/llms.txt`: rewrite the Customer + Vendor lines from "coming soon" to one-sentence live summaries.
+- Update `mem://features/case-study-pages-structure` memory note if the vendor page introduces a new section pattern.
+- Final QA pass: run preview, scroll both pages, check `<title>` length <60 chars, meta description <160 chars, single H1 per page, all images load, no console errors.
 
 ## Out of scope
-- No layout, component, animation, routing, or backend changes.
-- No new images, no design tokens touched.
-- Sitemap and robots.txt remain as is.
+- No new design tokens, no Tailwind config changes, no animation library swaps.
+- No copy changes to Hero, About, Skills, Contact (already handled in last loop).
+- No backend, auth, or Cloud changes.
 
-## Verification
-- Read each edited file back to confirm copy length and tone.
-- No SEO finding regressions — titles stay <60 chars, descriptions <160 chars, single H1 per page preserved.
+## Verification per step
+- After each build step (2 and 4), read the page back in preview, watch console logs, and spot-check 3 image paths exist under `public/`.
+- After step 5, re-check the SEO findings list — no regressions on titles, descriptions, sitemap, structured data.
