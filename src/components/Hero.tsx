@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Linkedin, Dribbble, ChevronDown } from "lucide-react";
+import { Linkedin, Github, ChevronDown } from "lucide-react";
 import BehanceIcon from "@/components/icons/BehanceIcon";
 import profileImage from "@/assets/profile.png";
 import { useParallax } from "@/hooks/use-parallax";
@@ -92,14 +92,14 @@ const Hero = () => {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a
-                href="https://dribbble.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 hover:glow-cyan-sm"
-              >
-                <Dribbble className="w-5 h-5" />
-              </a>
+            <a
+              href="https://github.com/atuiuxdesigner"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 hover:glow-cyan-sm"
+            >
+              <Github className="w-5 h-5" />
+            </a>
               <a
                 href="https://www.behance.net/atulthorat1"
                 target="_blank"
