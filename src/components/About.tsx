@@ -67,7 +67,7 @@ const journeySteps = [
     title: "The Unexpected Path",
     subtitle: "Accidental Engineer",
     description:
-      "Started Computer Engineering with no real plan. Concepts felt heavy and I struggled to keep up — but I kept showing up.",
+      "Started Computer Engineering with no plan. Kept showing up anyway.",
     side: "left",
   },
   {
@@ -75,7 +75,7 @@ const journeySteps = [
     title: "The Struggle",
     subtitle: "Persistence Through Failure",
     description:
-      "Failed exams, dropped a year, refused to quit. Finished my Bachelor's during COVID after a lot of late nights.",
+      "Failed, dropped a year, finished my degree mid-COVID.",
     side: "right",
   },
   {
@@ -83,7 +83,7 @@ const journeySteps = [
     title: "The Dark Period",
     subtitle: "Post-COVID Reality",
     description:
-      "Hiring froze for COVID-era grads. I took a non-IT job to survive, but my creative side kept nudging me forward.",
+      "Hiring froze. Took a non-IT job. Kept sketching on the side.",
     side: "left",
   },
   {
@@ -91,7 +91,7 @@ const journeySteps = [
     title: "The Awakening",
     subtitle: "Discovering UX Design",
     description:
-      "Found UX design and finally felt at home. It's about understanding people and quietly making their lives easier.",
+      "Found UX. Felt like home.",
     side: "right",
   },
   {
@@ -99,7 +99,7 @@ const journeySteps = [
     title: "The Dream Realized",
     subtitle: "Landing at Youhonk",
     description:
-      "Joined Youhonk in Pune as their UX designer. A year in, still loving every sprint and every user story.",
+      "Joined Youhonk. Still loving every sprint.",
     side: "left",
   },
 ];
@@ -114,12 +114,8 @@ const About = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            The Path to Finding My{" "}
-            <span className="text-primary glow-text">Purpose in Design</span>
+            How I <span className="text-primary glow-text">got here</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A short story about how I found design — and why I still love it.
-          </p>
         </div>
 
         {/* Timeline */}
@@ -193,8 +189,6 @@ const About = () => {
 
               <div className="text-muted-foreground">
                 <span className="text-primary font-semibold">— Atul Thorat</span>
-                <span className="mx-2">•</span>
-                <span>Design Philosophy</span>
               </div>
             </div>
           </div>

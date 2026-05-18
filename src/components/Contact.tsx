@@ -116,11 +116,10 @@ const Contact = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Let's Create Something{" "}
-            <span className="text-primary glow-text">Amazing</span>
+            Let's <span className="text-primary glow-text">talk</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Got an idea? I'd love to hear it — drop a message below.
+            Got an idea? Send it over.
           </p>
         </div>
 
@@ -217,7 +216,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, subject: e.target.value })
                 }
-                placeholder="Project inquiry"
+                placeholder="What's on your mind?"
                 className="bg-secondary border-border focus:border-primary focus:ring-primary"
                 required
               />
