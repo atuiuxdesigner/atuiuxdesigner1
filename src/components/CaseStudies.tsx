@@ -150,6 +150,7 @@ const CaseStudies = () => {
 
             return <div key={index} data-cursor="Coming Soon">{cardContent}</div>;
           })}
+        </div>
       </div>
     </section>
   );
