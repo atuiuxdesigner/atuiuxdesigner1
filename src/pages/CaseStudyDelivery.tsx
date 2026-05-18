@@ -116,11 +116,11 @@ import ScreenShowcase from "@/components/case-study/ScreenShowcase";
                    UX Case Study
                  </span>
                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                   Designing a Real-Time Delivery Partner App for{" "}
-                   <span className="text-primary">Vehicle Pickup & Drop</span>
+                   A real-time app for{" "}
+                   <span className="text-primary">vehicle pickup & drop</span>
                  </h1>
                  <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-                   Transforming the weakest link in vehicle servicing into a seamless, trust-building experience
+                   Fixing the weakest link in vehicle servicing.
                  </p>
                  
                  {/* Project Metadata */}
@@ -183,11 +183,8 @@ import ScreenShowcase from "@/components/case-study/ScreenShowcase";
                  {/* The Challenge */}
                  <div>
                    <h2 className="text-2xl md:text-3xl font-bold mb-6">The Challenge</h2>
-                   <p className="text-muted-foreground leading-relaxed mb-4">
-                     When a customer books a vehicle service, someone has to physically pick up the vehicle and drop it back after servicing. This critical handoff—between the customer, the workshop, and the delivery partner—was falling apart.
-                   </p>
                    <p className="text-muted-foreground leading-relaxed">
-                     The coordination gap was causing delays, miscommunication, and a poor experience for everyone involved. There was no dedicated tool for delivery partners to manage their tasks efficiently.
+                     Every service booking needs a physical pickup and drop. That handoff — customer, workshop, delivery partner — was breaking down, with no dedicated tool to hold it together.
                    </p>
                  </div>
                </div>

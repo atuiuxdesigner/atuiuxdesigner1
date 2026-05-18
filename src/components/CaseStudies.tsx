@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import thumbnailDelivery from "@/assets/thumbnail-dp1.png";
 import thumbnailCustomer from "@/assets/thumbnail-YC_1.png";
@@ -23,8 +22,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Youhonk Delivery App",
-    description:
-      "A real-time app helping workshop staff pick up and drop off vehicles with ease. End-to-end flows and wireframes I loved building.",
+    description: "Real-time pickup & drop-off for workshop staff.",
     tags: ["UX Research", "UI Design", "Prototyping"],
     image: "delivery",
     color: "from-blue-500/20 to-purple-500/20",
@@ -34,8 +32,7 @@ const projects: Project[] = [
   },
   {
     title: "Youhonk Customer App",
-    description:
-      "A friendly mobile app to book vehicle repairs in a few taps. Turns a stressful errand into a calm, simple journey.",
+    description: "Book a vehicle repair in a few taps.",
     tags: ["Mobile Design", "User Testing", "Design System"],
     image: "customer",
     color: "from-green-500/20 to-teal-500/20",
@@ -45,8 +42,7 @@ const projects: Project[] = [
   },
   {
     title: "Youhonk Vendor App",
-    description:
-      "A vendor portal that makes managing bookings and workshop operations feel effortless. Built with real workshop teams in mind.",
+    description: "Workshop ops without the spreadsheet chaos.",
     tags: ["Product Design", "Wireframing", "Usability"],
     image: "mentor",
     color: "from-orange-500/20 to-red-500/20",
@@ -66,11 +62,8 @@ const CaseStudies = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Case <span className="text-primary glow-text">Studies</span>
+            Selected <span className="text-primary glow-text">work</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A few projects close to my heart — real problems, simple solutions.
-          </p>
         </div>
 
         {/* Projects Grid */}
@@ -157,18 +150,6 @@ const CaseStudies = () => {
 
             return <div key={index} data-cursor="Coming Soon">{cardContent}</div>;
           })}
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center">
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-primary/50 text-primary hover:bg-primary/10 transition-all duration-300"
-          >
-            See all case studies
-            <ArrowUpRight className="w-4 h-4 ml-2" />
-          </Button>
         </div>
       </div>
     </section>

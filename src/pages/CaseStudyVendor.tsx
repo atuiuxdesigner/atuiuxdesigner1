@@ -65,15 +65,15 @@ const CaseStudyVendor = () => {
                 <span className="text-4xl">🏪</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Case Study Coming Soon
+                Coming soon
               </h2>
               <p className="text-muted-foreground text-lg mb-8">
-                I'm writing this one up. Check back soon to see how I helped vendors manage bookings and workshop ops with ease.
+                Writing this one up. Check back soon.
               </p>
               <Link to="/#work">
                 <Button variant="outline" className="gap-2">
                   <ArrowLeft className="w-4 h-4" />
-                  Back to All Projects
+                  Back to work
                 </Button>
               </Link>
             </div>

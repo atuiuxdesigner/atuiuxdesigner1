@@ -61,46 +61,46 @@ const skillCategories: SkillCategory[] = [
   {
     title: "UX Design",
     skills: [
-      { name: "User Research", level: "Expert", evidence: "Led 3 product discoveries" },
-      { name: "Wireframing", level: "Advanced", evidence: "50+ sprint deliverables" },
-      { name: "Prototyping", level: "Expert", evidence: "Hi-fi prototypes in Figma" },
-      { name: "Usability Testing", level: "Advanced", evidence: "20+ user sessions" },
+      { name: "User Research", level: "Expert", evidence: "" },
+      { name: "Wireframing", level: "Advanced", evidence: "" },
+      { name: "Prototyping", level: "Expert", evidence: "" },
+      { name: "Usability Testing", level: "Advanced", evidence: "" },
     ],
   },
   {
     title: "UI Design",
     skills: [
-      { name: "Visual Design", level: "Expert", evidence: "Enterprise dashboards" },
-      { name: "Design Systems", level: "Advanced", evidence: "Built component libraries" },
-      { name: "Typography", level: "Proficient", evidence: "Clear type hierarchy" },
-      { name: "Color Theory", level: "Advanced", evidence: "Accessible palettes" },
+      { name: "Visual Design", level: "Expert", evidence: "" },
+      { name: "Design Systems", level: "Advanced", evidence: "" },
+      { name: "Typography", level: "Proficient", evidence: "" },
+      { name: "Color Theory", level: "Advanced", evidence: "" },
     ],
   },
   {
     title: "Tools",
     skills: [
-      { name: "Figma", level: "Expert", evidence: "My daily go-to" },
-      { name: "Adobe XD", level: "Proficient", evidence: "Cross-team handoffs" },
-      { name: "Sketch", level: "Proficient", evidence: "Legacy project support" },
-      { name: "Framer", level: "Proficient", evidence: "Interactive prototypes" },
+      { name: "Figma", level: "Expert", evidence: "" },
+      { name: "Adobe XD", level: "Proficient", evidence: "" },
+      { name: "Sketch", level: "Proficient", evidence: "" },
+      { name: "Framer", level: "Proficient", evidence: "" },
     ],
   },
   {
     title: "Soft Skills",
     skills: [
-      { name: "Communication", level: "Expert", evidence: "Clear stakeholder updates" },
-      { name: "Problem Solving", level: "Expert", evidence: "Untangling tough flows" },
-      { name: "Collaboration", level: "Advanced", evidence: "Cross-functional teamwork" },
-      { name: "Adaptability", level: "Advanced", evidence: "Thrive in agile sprints" },
+      { name: "Communication", level: "Expert", evidence: "" },
+      { name: "Problem Solving", level: "Expert", evidence: "" },
+      { name: "Collaboration", level: "Advanced", evidence: "" },
+      { name: "Adaptability", level: "Advanced", evidence: "" },
     ],
   },
 ];
 
 const stats = [
-  { value: 1, suffix: "+", label: "Years of Experience" },
-  { value: 50, suffix: "+", label: "Sprints Completed" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
-  { value: 1000, suffix: "+", label: "Users Impacted" },
+  { value: 1, suffix: "+", label: "Years" },
+  { value: 50, suffix: "+", label: "Sprints" },
+  { value: 98, suffix: "%", label: "Satisfaction" },
+  { value: 1000, suffix: "+", label: "Users reached" },
 ];
 
 const SkillItem = ({ skill, isVisible, index }: { skill: Skill; isVisible: boolean; index: number }) => {
@@ -117,13 +117,12 @@ const SkillItem = ({ skill, isVisible, index }: { skill: Skill; isVisible: boole
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className="flex items-center justify-between gap-3 mb-1">
+      <div className="flex items-center justify-between gap-3">
         <span className="text-foreground font-medium">{skill.name}</span>
         <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${levelStyles[skill.level]}`}>
           {skill.level}
         </span>
       </div>
-      <p className="text-muted-foreground text-sm">{skill.evidence}</p>
     </div>
   );
 };
@@ -190,11 +189,8 @@ const Skills = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Skills & <span className="text-primary glow-text">Expertise</span>
+            What I <span className="text-primary glow-text">do</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            The toolkit I reach for every day — craft, tools, and people skills.
-          </p>
         </div>
 
         {/* Skills Grid */}
