@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import thumbnailDelivery from "@/assets/thumbnail-dp1.png";
 import thumbnailCustomer from "@/assets/thumbnail-YC_1.png";
@@ -151,19 +150,6 @@ const CaseStudies = () => {
 
             return <div key={index} data-cursor="Coming Soon">{cardContent}</div>;
           })}
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center">
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-primary/50 text-primary hover:bg-primary/10 transition-all duration-300"
-          >
-            See all case studies
-            <ArrowUpRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
       </div>
     </section>
   );

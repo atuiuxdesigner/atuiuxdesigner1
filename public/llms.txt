@@ -1,10 +1,9 @@
-# Atul Thorat — UX Designer Portfolio
+# Atul Thorat — Product Designer
 
-> Hi, I'm Atul — a UX designer in Pune crafting friendly mobile and SaaS apps for logistics and mobility. This is my portfolio, including the Youhonk delivery, customer, and vendor apps.
+> Product designer in Pune. Mobility & SaaS apps. Currently at Youhonk.
 
 ## Pages
-
-- [Home](/): A warm intro with case studies, skills, story, and ways to reach me.
-- [Youhonk Delivery App Case Study](/case-study/delivery): Designing a real-time app for vehicle pickup & drop.
-- [Youhonk Customer App Case Study](/case-study/customer): A simple way to book vehicle repairs from your phone.
-- [Youhonk Vendor App Case Study](/case-study/vendor): A vendor portal for smooth bookings and workshop ops.
+- [Home](/)
+- [Youhonk Delivery — case study](/case-study/delivery): real-time vehicle pickup & drop
+- [Youhonk Customer — case study](/case-study/customer): book a repair in a few taps
+- [Youhonk Vendor — case study](/case-study/vendor): workshop ops, simplified
