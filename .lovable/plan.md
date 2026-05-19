@@ -1,80 +1,97 @@
-# Minimize & Sharpen Copy Across Site
+# Portfolio Redesign Plan
 
-The current site reads like a long-form bio. Top portfolios (Rauno, Olu, Brittany Chiang, Paco Coursey, Frank Chimero) lead with **one strong line**, then let work speak. Goal: cut ~50% of words, keep voice warm but confident.
+A confident, recruiter-first redesign blending **Aditi's** oversized editorial typography with **Anix's** clean narrative-plus-visual hero. High-contrast Brutalist Pop palette makes work pop and signals craft from the first scroll.
 
-## Principles
-- One line per idea. No filler ("A short story about…", "The toolkit I reach for every day…").
-- Headlines: max 8 words. Subheads: max 14.
-- Card descriptions: 1 sentence, ≤18 words.
-- Drop redundant section intros where the heading already says it.
+## Locked direction
 
----
+- **Palette**: White `#ffffff`, Ink `#0a0a0a`, Orange accent `#ff5722`, Yellow highlight `#ffeb3b`
+- **Typography**: Instrument Serif (headings, oversized) + Work Sans (body, UI)
+- **Layout**: Aditi-style bold typographic hero → immediately into Anix-style case study grid
+- **Mood**: Editorial, opinionated, recruiter-scannable, anti-corporate
 
-## 1. Hero (`src/components/Hero.tsx`)
+## What changes
 
-**Before** — eyebrow + 2-line H1 + 3-line paragraph.
+### 1. Design tokens (`src/index.css`, `tailwind.config.ts`)
+- Replace primary `#5b4bff` → orange `#ff5722` (HSL: `14 100% 57%`)
+- Add `--highlight` yellow `#ffeb3b` for marker/underline accents
+- Light mode becomes default (paper white); dark = pure ink black
+- Remove cyan glows; replace with hard offset shadows (brutalist `4px 4px 0 var(--ink)`)
+- Border radius: drop to `0.25rem` (less rounded, more architectural)
+- Add Instrument Serif + Work Sans from Google Fonts; retire Sora/Inter imports
 
-**After:**
-- Eyebrow: `Product Designer — Pune`
-- H1: `Designing mobility apps people actually enjoy.`
-- Sub (1 line): `Currently shaping Youhonk's three-app vehicle service platform.`
-- CTAs unchanged.
+### 2. Hero (`src/components/Hero.tsx`)
+- **Aditi-style oversized headline**: "Designing mobility apps people actually use" in Instrument Serif, ~10rem desktop, tight leading, italic emphasis on "actually"
+- Remove profile image from hero (move to About) — let type carry it
+- Small eyebrow: "Product Designer · Pune · Available for work" with green dot
+- Two CTAs: filled black "See Case Studies", outline "Resume ↓"
+- Yellow marker-highlight behind one word for brutalist pop
+- Remove orbs/glows/parallax decorations
 
-## 2. About (`src/components/About.tsx`)
+### 3. Reorder homepage (`src/pages/Index.tsx`)
+New order: **Hero → Case Studies → About → Skills → Contact**
+(Case studies move directly under hero — recruiter sees work first)
 
-- H2: `How I got here`
-- Sub: *(remove — heading is enough)*
-- Each timeline `description`: trim to ≤15 words. Examples:
-  - 2015: `Started Computer Engineering with no plan. Kept showing up anyway.`
-  - 2021: `Failed, dropped a year, finished my degree mid-COVID.`
-  - 2022: `Hiring froze. Took a non-IT job. Kept sketching on the side.`
-  - 2023: `Found UX. Felt like home.`
-  - 2024: `Joined Youhonk. Still loving every sprint.`
-- Quote block: keep quote, drop "Design Philosophy" tag line.
+### 4. Case Studies (`src/components/CaseStudies.tsx`)
+- Anix-style large cards: full-width image-led tiles, alternating left/right
+- Tag chips (B2B, Mobile, SaaS) in orange outline
+- One-line problem statement + "View case study →" link with hard arrow
+- Hover: card translates `-4px -4px` with offset black shadow
 
-## 3. Skills (`src/components/Skills.tsx`)
+### 5. About (`src/components/About.tsx`)
+- Two-column: profile photo (square, no glow) + short bio with serif pull-quote
+- Replace timeline cards with clean horizontal rule-separated entries (year · company · role)
 
-- H2: `What I do`
-- Sub: *(remove)*
-- Remove `evidence` line under every skill (cuts ~16 lines of text). Keep name + level badge only.
-- Stats labels shortened: `Years`, `Sprints`, `Satisfaction`, `Users reached`.
+### 6. Skills (`src/components/Skills.tsx`)
+- Flat grid of skill chips with orange borders — no badges, no maturity meters
+- Group: Design · Research · Tools
 
-## 4. Case Studies (`src/components/CaseStudies.tsx`)
+### 7. Contact (`src/components/Contact.tsx`)
+- Aditi-style giant headline: "Let's make something." 
+- Email as oversized clickable text + social row
 
-- H2: `Selected work`
-- Sub: *(remove)*
-- Card descriptions → one line each:
-  - Delivery: `Real-time pickup & drop-off for workshop staff.`
-  - Customer: `Book a vehicle repair in a few taps.`
-  - Vendor: `Workshop ops without the spreadsheet chaos.`
-- Drop "See all case studies" button (there are only 3 — redundant).
+### 8. Navbar (`src/components/Navbar.tsx`)
+- Sticky, bordered-bottom, no blur
+- Update logo treatment for light theme
+- "Let's Talk" CTA → solid black button with yellow hover state
 
-## 5. Contact (`src/components/Contact.tsx`)
+### 9. Footer (`src/components/Footer.tsx`)
+- Minimal: name · year · socials in single row
+- Black background section with orange links
 
-- H2: `Let's talk`
-- Sub: `Got an idea? Send it over.`
-- Form labels unchanged. Subject placeholder → `What's on your mind?`
+### 10. Theme & misc
+- Light theme as default; dark mode kept but recolored (ink bg, paper text, orange/yellow same)
+- Remove `glow-cyan` utilities; add `shadow-brutal` utility
+- Keep: custom cursor, intro animation (recolor to orange), chatbot (restyle bubble)
 
-## 6. Case Study Pages (Delivery / Customer / Vendor)
+## Out of scope (not changing)
+- Case study detail pages (`CaseStudyDelivery/Customer/Vendor.tsx`) — only restyle headers to match new tokens, keep content/structure
+- Supabase edge functions, chatbot logic, SEO meta, routing
 
-Pass through each `pages/CaseStudy*.tsx`:
-- Tighten hero subheads to one sentence.
-- Replace paragraph-style "Challenge / Outcome" blocks with 2-sentence max.
-- Keep metric cards & screen showcases — those are visual, not text-heavy.
+## Files to edit
+```
+src/index.css                          (tokens, fonts, utilities)
+tailwind.config.ts                     (color mapping)
+src/components/Hero.tsx                (full rewrite)
+src/components/Navbar.tsx              (restyle)
+src/components/CaseStudies.tsx         (layout overhaul)
+src/components/About.tsx               (simplify)
+src/components/Skills.tsx              (flatten)
+src/components/Contact.tsx             (oversize)
+src/components/Footer.tsx              (minimal)
+src/components/IntroAnimation.tsx      (recolor)
+src/components/Chatbot.tsx             (restyle bubble)
+src/pages/Index.tsx                    (section reorder)
+src/pages/CaseStudyDelivery.tsx        (header restyle only)
+src/pages/CaseStudyCustomer.tsx        (header restyle only)
+src/pages/CaseStudyVendor.tsx          (header restyle only)
+```
 
-*(Detailed line edits done during implementation since pages are long.)*
+## Implementation order
+1. Tokens + fonts (foundation)
+2. Hero + Navbar (above-the-fold impact)
+3. Case Studies reorder + redesign
+4. About / Skills / Contact / Footer
+5. Intro animation + chatbot recolor
+6. Visual QA across breakpoints (1067px viewport + mobile)
 
-## 7. Meta / SEO
-
-- `index.html` `<meta description>`: tighten to ≤120 chars, one clear sentence.
-- `public/llms.txt`: condense to bullet summary.
-
----
-
-## Out of scope
-- No layout, color, animation, or component structure changes.
-- No new sections or removed sections (besides the redundant "See all case studies" button).
-- No image/asset changes.
-
-## Files touched
-`Hero.tsx`, `About.tsx`, `Skills.tsx`, `CaseStudies.tsx`, `Contact.tsx`, `CaseStudyDelivery.tsx`, `CaseStudyCustomer.tsx`, `CaseStudyVendor.tsx`, `index.html`, `public/llms.txt`.
+Approve and I'll build it section by section.
