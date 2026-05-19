@@ -61,7 +61,7 @@ const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-500"
       style={{
-        backgroundColor: "#5b4bff",
+        backgroundColor: "#ff5722",
         opacity: phase === "revealing" ? 0 : 1,
         pointerEvents: phase === "revealing" ? "none" : "auto",
       }}

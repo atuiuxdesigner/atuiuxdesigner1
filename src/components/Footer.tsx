@@ -1,62 +1,34 @@
-import { Linkedin, Github, Heart } from "lucide-react";
+import { Linkedin, Github } from "lucide-react";
 import BehanceIcon from "@/components/icons/BehanceIcon";
-import logo from "@/assets/logo.svg";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
+  const year = new Date().getFullYear();
   return (
-    <footer className="py-12 border-t border-border bg-card/30">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo & Copyright */}
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <a href="#home" className="flex items-center gap-2 group">
-              <img 
-                src={logo} 
-                alt="Atul Thorat Logo" 
-                className="h-14 w-auto object-contain transition-all duration-300 group-hover:scale-110 group-hover:brightness-110"
-              />
-            </a>
-            <p className="text-muted-foreground text-sm">
-              © {currentYear} Atul Thorat. All rights reserved.
-            </p>
-          </div>
-
-          {/* Made with Love */}
-          <div className="flex items-center gap-1 text-muted-foreground text-sm">
-            Made with{" "}
-            <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />{" "}
-            and lots of coffee
-          </div>
-
-          {/* Social Links */}
-          <div className="flex gap-4">
+    <footer className="bg-[hsl(0_0%_4%)] text-white border-t-2 border-foreground">
+      <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <p className="font-serif-display text-2xl text-white">
+          Atul Thorat<span className="text-primary">.</span>
+        </p>
+        <p className="text-sm text-white/70">
+          © {year} — Designed & built with care in Pune.
+        </p>
+        <div className="flex gap-3">
+          {[
+            { href: "https://www.linkedin.com/in/atul-thorat-6065b8169/", icon: Linkedin, label: "LinkedIn" },
+            { href: "https://github.com/atuiuxdesigner", icon: Github, label: "GitHub" },
+            { href: "https://www.behance.net/atulthorat1", icon: BehanceIcon, label: "Behance" },
+          ].map(({ href, icon: Icon, label }) => (
             <a
-              href="https://www.linkedin.com/in/atul-thorat-6065b8169/"
+              key={label}
+              href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300"
+              aria-label={label}
+              className="w-10 h-10 border-2 border-white text-white flex items-center justify-center hover:bg-primary hover:border-primary transition-colors"
             >
-              <Linkedin className="w-5 h-5" />
+              <Icon className="w-4 h-4" />
             </a>
-            <a
-              href="https://github.com/atuiuxdesigner"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.behance.net/atulthorat1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300"
-            >
-              <BehanceIcon className="w-5 h-5" />
-            </a>
-          </div>
+          ))}
         </div>
       </div>
     </footer>
