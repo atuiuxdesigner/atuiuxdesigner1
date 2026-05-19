@@ -14,40 +14,10 @@ export default {
   	},
   	extend: {
   		fontFamily: {
-  			sans: [
-  				'Inter',
-  				'ui-sans-serif',
-  				'system-ui',
-  				'sans-serif',
-  				'Apple Color Emoji',
-  				'Segoe UI Emoji',
-  				'Segoe UI Symbol',
-  				'Noto Color Emoji'
-  			],
-  			heading: [
-  				'Sora',
-  				'Inter',
-  				'system-ui',
-  				'sans-serif'
-  			],
-  			serif: [
-  				'ui-serif',
-  				'Georgia',
-  				'Cambria',
-  				'Times New Roman',
-  				'Times',
-  				'serif'
-  			],
-  			mono: [
-  				'ui-monospace',
-  				'SFMono-Regular',
-  				'Menlo',
-  				'Monaco',
-  				'Consolas',
-  				'Liberation Mono',
-  				'Courier New',
-  				'monospace'
-  			]
+  			sans: ['Work Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			heading: ['Instrument Serif', 'Georgia', 'serif'],
+  			serif: ['Instrument Serif', 'Georgia', 'serif'],
+  			mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
   		},
   		colors: {
   			border: 'hsl(var(--border))',

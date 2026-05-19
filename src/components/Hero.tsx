@@ -1,178 +1,100 @@
 import { Button } from "@/components/ui/button";
-import { Linkedin, Github, ChevronDown } from "lucide-react";
+import { Linkedin, Github, ArrowDown, ArrowRight } from "lucide-react";
 import BehanceIcon from "@/components/icons/BehanceIcon";
-import profileImage from "@/assets/profile.png";
-import { useParallax } from "@/hooks/use-parallax";
 
 const Hero = () => {
-  const { scrollY, getOffset, isMobile } = useParallax();
-
-  // Scroll-based fade for scroll indicator
-  const scrollIndicatorOpacity = isMobile ? 1 : Math.max(0, 1 - scrollY / 300);
-
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
+      className="min-h-[92vh] flex items-center relative overflow-hidden pt-24 pb-16 border-b-2 border-foreground"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
-      
-      {/* Background orbs — margin-aware + parallax */}
-      <div
-        className="absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl"
-        style={{
-          top: "25%",
-          right: "var(--content-margin)",
-          transform: `translateY(${getOffset(0.05)}px)`,
-          willChange: "transform",
-        }}
-      />
-      <div
-        className="absolute w-64 h-64 bg-primary/5 rounded-full blur-2xl"
-        style={{
-          bottom: "25%",
-          left: "var(--content-margin)",
-          transform: `translateY(${getOffset(0.1)}px)`,
-          willChange: "transform",
-        }}
-      />
-
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Content — text parallax */}
-          <div
-            className="space-y-8 text-center lg:text-left"
-            style={{
-              transform: `translateY(${getOffset(-0.03)}px)`,
-              willChange: "transform",
-            }}
-          >
-            <div className="space-y-4">
-              <p className="text-primary text-sm md:text-base font-medium uppercase tracking-widest animate-fade-in">
-                Product Designer — Pune
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
-                Designing{" "}
-                <span className="text-primary glow-text">mobility apps</span>{" "}
-                people actually enjoy.
-              </h1>
-            </div>
-
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              Currently shaping Youhonk's three-app vehicle service platform.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <Button
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan-sm transition-all duration-300 hover:scale-105"
-                asChild
-              >
-                <a href="#work">See Case Studies</a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary/50 text-primary dark:text-primary-foreground hover:bg-primary/10 transition-all duration-300"
-                asChild
-              >
-                <a href="/Atul_Thorat_UX_Designer.pdf" download>Download Resume</a>
-              </Button>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex gap-4 justify-center lg:justify-start animate-fade-in" style={{ animationDelay: "0.5s" }}>
-              <a
-                href="https://www.linkedin.com/in/atul-thorat-6065b8169/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 hover:glow-cyan-sm"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-            <a
-              href="https://github.com/atuiuxdesigner"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 hover:glow-cyan-sm"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-              <a
-                href="https://www.behance.net/atulthorat1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-border hover:border-primary bg-card/50 flex items-center justify-center text-muted-foreground hover:text-primary transition-all duration-300 hover:glow-cyan-sm"
-              >
-                <BehanceIcon className="w-5 h-5" />
-              </a>
-            </div>
-
-          </div>
-
-          {/* Right Content - Profile Image — parallax float */}
-          <div
-            className="order-first lg:order-last flex justify-center lg:justify-end animate-fade-in"
-            style={{
-              animationDelay: "0.3s",
-              transform: `translateY(${getOffset(-0.08)}px)`,
-              willChange: "transform",
-            }}
-          >
-            <div className="relative">
-              {/* Glow Ring */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-primary/50 to-primary animate-glow-pulse blur-xl scale-105" />
-              
-              {/* Profile Container */}
-              <div className="relative w-56 h-56 rounded-full border-2 border-primary/50 overflow-hidden shadow-2xl glow-cyan">
-                <div className="absolute inset-2 rounded-full overflow-hidden shadow-inner">
-                  <img 
-                    src={profileImage} 
-                    alt="Atul Thorat - UX Designer"
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-              </div>
-
-              {/* Decorative Elements — varied parallax speeds */}
-              <div
-                className="absolute -top-3 -right-3 w-6 h-6 bg-primary rounded-full"
-                style={{
-                  transform: `translateY(${getOffset(-0.12)}px)`,
-                  willChange: "transform",
-                }}
-              />
-              <div
-                className="absolute -bottom-1 -left-1 w-4 h-4 bg-primary/60 rounded-full"
-                style={{
-                  transform: `translateY(${getOffset(-0.06)}px)`,
-                  willChange: "transform",
-                }}
-              />
-              <div
-                className="absolute top-1/2 -right-6 w-3 h-3 bg-primary/40 rounded-full"
-                style={{
-                  transform: `translateY(${getOffset(-0.15)}px)`,
-                  willChange: "transform",
-                }}
-              />
-            </div>
-          </div>
+        {/* Eyebrow */}
+        <div className="flex items-center gap-3 mb-8 animate-fade-in">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+          </span>
+          <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-foreground">
+            Product Designer · Pune · Available for work
+          </p>
         </div>
 
-        {/* Scroll Down Indicator - fades out on scroll */}
-        <div
-          className="flex flex-col items-center gap-2 text-muted-foreground animate-fade-in mt-12"
+        {/* Oversized editorial headline */}
+        <h1
+          className="font-serif-display text-foreground leading-[0.92] tracking-tight animate-fade-in"
           style={{
-            animationDelay: "0.6s",
-            opacity: scrollIndicatorOpacity,
-            transition: "opacity 0.1s ease-out",
+            animationDelay: "0.1s",
+            fontSize: "clamp(3.5rem, 12vw, 11rem)",
           }}
         >
-          <span className="text-sm">Scroll Down</span>
-          <ChevronDown className="w-5 h-5 animate-scroll" />
+          Designing <em className="italic text-primary">mobility</em>
+          <br />
+          apps people
+          <br />
+          <span className="highlight-marker">actually</span> use.
+        </h1>
+
+        {/* Subline */}
+        <p
+          className="mt-10 max-w-2xl text-lg md:text-xl text-foreground/80 leading-relaxed animate-fade-in"
+          style={{ animationDelay: "0.3s" }}
+        >
+          Currently shaping <span className="font-semibold text-foreground">Youhonk's</span> three-app vehicle service platform — delivery, customer, and vendor.
+        </p>
+
+        {/* CTAs */}
+        <div
+          className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-in"
+          style={{ animationDelay: "0.4s" }}
+        >
+          <Button
+            size="lg"
+            className="bg-foreground text-background hover:bg-foreground rounded-sm border-2 border-foreground shadow-brutal hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all font-semibold text-base h-14 px-8"
+            asChild
+          >
+            <a href="#work">
+              See Case Studies
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="bg-background text-foreground hover:bg-accent rounded-sm border-2 border-foreground shadow-brutal hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all font-semibold text-base h-14 px-8"
+            asChild
+          >
+            <a href="/Atul_Thorat_UX_Designer.pdf" download>
+              Resume
+              <ArrowDown className="ml-2 w-5 h-5" />
+            </a>
+          </Button>
+        </div>
+
+        {/* Socials */}
+        <div
+          className="mt-12 flex items-center gap-3 animate-fade-in"
+          style={{ animationDelay: "0.5s" }}
+        >
+          <span className="text-xs uppercase tracking-widest font-semibold text-foreground/60 mr-2">
+            Find me
+          </span>
+          {[
+            { href: "https://www.linkedin.com/in/atul-thorat-6065b8169/", icon: Linkedin, label: "LinkedIn" },
+            { href: "https://github.com/atuiuxdesigner", icon: Github, label: "GitHub" },
+            { href: "https://www.behance.net/atulthorat1", icon: BehanceIcon, label: "Behance" },
+          ].map(({ href, icon: Icon, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="w-11 h-11 border-2 border-foreground bg-background hover:bg-accent flex items-center justify-center text-foreground transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] shadow-brutal-sm hover:shadow-brutal"
+            >
+              <Icon className="w-5 h-5" />
+            </a>
+          ))}
         </div>
       </div>
     </section>

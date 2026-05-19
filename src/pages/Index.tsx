@@ -60,8 +60,8 @@ const Index = () => {
         <main>
           <Hero />
           <CaseStudies />
-          <Skills />
           <About />
+          <Skills />
           <Contact />
         </main>
         <Footer />
