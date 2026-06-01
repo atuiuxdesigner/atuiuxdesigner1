@@ -20,7 +20,7 @@ const projects: Project[] = [
     title: "Youhonk Delivery App",
     description: "Real-time pickup & drop-off flows that cut workshop dispatch time in half.",
     tags: ["Mobile", "Logistics", "0→1"],
-    thumbnail: thumbnailDelivery.url,
+    thumbnail: thumbnailDelivery,
     status: "Live",
     internalLink: "/case-study/delivery",
   },
