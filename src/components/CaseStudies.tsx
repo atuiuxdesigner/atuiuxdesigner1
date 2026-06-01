@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import thumbnailDelivery from "@/assets/thumbnail-delivery-new.png.asset.json";
+import thumbnailDelivery from "@/assets/thumbnail-delivery-new.png";
 import thumbnailCustomer from "@/assets/thumbnail-YC_1.png";
 import thumbnailVendor from "@/assets/thumbnail-YP_1.png";
 import { Link } from "react-router-dom";
