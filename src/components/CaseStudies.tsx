@@ -18,6 +18,15 @@ interface Project {
 const projects: Project[] = [
   {
     index: "01",
+    title: "Delivery Partner App Revamp",
+    description: "A state-first rebuild of the partner app — 49 screens, 40% fewer steps, 3 new self-service features.",
+    tags: ["Mobile", "Field Ops", "Revamp"],
+    thumbnail: thumbnailRevamp,
+    status: "Live",
+    internalLink: "/case-study/delivery-revamp",
+  },
+  {
+    index: "02",
     title: "Youhonk Delivery App",
     description: "Real-time pickup & drop-off flows that cut workshop dispatch time in half.",
     tags: ["Mobile", "Logistics", "0→1"],
@@ -26,7 +35,7 @@ const projects: Project[] = [
     internalLink: "/case-study/delivery",
   },
   {
-    index: "02",
+    index: "03",
     title: "Youhonk Customer App",
     description: "Book a vehicle repair in three taps — designed for first-time, low-trust users.",
     tags: ["Mobile", "B2C", "Onboarding"],
