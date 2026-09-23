@@ -44,7 +44,7 @@ const projects: Project[] = [
     internalLink: "/case-study/customer",
   },
   {
-    index: "03",
+    index: "04",
     title: "Youhonk Vendor App",
     description: "Workshop ops without the spreadsheet chaos — orders, payments, and inventory in one.",
     tags: ["SaaS", "B2B", "Operations"],
