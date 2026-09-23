@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import thumbnailDelivery from "@/assets/thumbnail-delivery-new.png";
 import thumbnailCustomer from "@/assets/thumbnail-YC_1.png";
 import thumbnailVendor from "@/assets/thumbnail-YP_1.png";
-import thumbnailRevamp from "@/assets/revamp/mockup-screen-3-hero-3.png";
+import thumbnailRevamp from "@/assets/revamp/hero-overview.png";
 import { Link } from "react-router-dom";
 
 interface Project {
