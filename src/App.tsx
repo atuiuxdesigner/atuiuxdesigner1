@@ -11,6 +11,7 @@ import CaseStudyDelivery from "./pages/CaseStudyDelivery";
 import CaseStudyCustomer from "./pages/CaseStudyCustomer";
 import CaseStudyVendor from "./pages/CaseStudyVendor";
 import CaseStudyRevamp from "./pages/CaseStudyRevamp";
+import CaseStudyManasvi from "./pages/CaseStudyManasvi";
 import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
               <Route path="/case-study/customer" element={<CaseStudyCustomer />} />
               <Route path="/case-study/vendor" element={<CaseStudyVendor />} />
               <Route path="/case-study/delivery-revamp" element={<CaseStudyRevamp />} />
+              <Route path="/case-study/manasvi-facility-services" element={<CaseStudyManasvi />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
