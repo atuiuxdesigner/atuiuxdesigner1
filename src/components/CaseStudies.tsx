@@ -3,6 +3,7 @@ import thumbnailDelivery from "@/assets/thumbnail-delivery-new.png";
 import thumbnailCustomer from "@/assets/thumbnail-YC_1.png";
 import thumbnailVendor from "@/assets/thumbnail-YP_1.png";
 import thumbnailRevamp from "@/assets/revamp/hero-overview.png";
+import thumbnailManasvi from "@/assets/manasvi/desk-hero.jpg";
 import { Link } from "react-router-dom";
 
 interface Project {
@@ -51,6 +52,15 @@ const projects: Project[] = [
     thumbnail: thumbnailVendor,
     status: "Coming Soon",
     internalLink: "/case-study/vendor",
+  },
+  {
+    index: "05",
+    title: "Manasvi Facility Services",
+    description: "Freelance brand and website for a Pune cleaning business — clear services, local trust cues and one-tap contact.",
+    tags: ["Web", "Brand", "Freelance"],
+    thumbnail: thumbnailManasvi,
+    status: "Live",
+    internalLink: "/case-study/manasvi-facility-services",
   },
 ];
 
