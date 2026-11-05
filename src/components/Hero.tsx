@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Linkedin, Github, ArrowDown, ArrowRight } from "lucide-react";
 import BehanceIcon from "@/components/icons/BehanceIcon";
+import resumePdf from "@/assets/Atul_Thorat_UX_Designer.pdf.asset.json";
 
 const Hero = () => {
   return (
@@ -64,7 +65,7 @@ const Hero = () => {
             className="bg-background text-foreground hover:bg-accent rounded-sm border-2 border-foreground shadow-brutal hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all font-semibold text-base h-14 px-8"
             asChild
           >
-            <a href="/Atul_Thorat_UX_Designer.pdf" download>
+            <a href={resumePdf.url} download="Atul_Thorat_UX_Designer.pdf">
               Resume
               <ArrowDown className="ml-2 w-5 h-5" />
             </a>
