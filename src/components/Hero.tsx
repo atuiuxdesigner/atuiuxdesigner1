@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Linkedin, Github, ArrowDown, ArrowRight } from "lucide-react";
 import BehanceIcon from "@/components/icons/BehanceIcon";
-import resumePdf from "@/assets/Atul_Thorat_UX_Designer_Resume.pdf.asset.json";
+const resumePdf = { url: "/Atul_Thorat_UX_Designer_Resume.pdf" };
 
 const Hero = () => {
   return (
