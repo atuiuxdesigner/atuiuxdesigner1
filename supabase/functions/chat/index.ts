@@ -10,14 +10,15 @@ const ALLOWED_ORIGINS = [
 ];
 
 function getCorsHeaders(origin: string | null) {
-  const allowedOrigin =
-    origin && ALLOWED_ORIGINS.some((o) => origin.startsWith(o))
-      ? origin
-      : ALLOWED_ORIGINS[0];
   return {
-    "Access-Control-Allow-Origin": allowedOrigin,
+    ...(origin && ALLOWED_ORIGINS.includes(origin)
+      ? { "Access-Control-Allow-Origin": origin }
+      : {}),
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers":
       "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+    "Access-Control-Max-Age": "86400",
+    Vary: "Origin",
   };
 }
 
@@ -123,6 +124,13 @@ const TOOLS = [
 serve(async (req) => {
   const origin = req.headers.get("origin");
   const corsHdrs = getCorsHeaders(origin);
+
+  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+    return new Response(JSON.stringify({ error: "Origin not allowed" }), {
+      status: 403,
+      headers: { ...corsHdrs, "Content-Type": "application/json" },
+    });
+  }
 
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHdrs });
